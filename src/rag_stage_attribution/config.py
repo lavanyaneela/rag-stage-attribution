@@ -20,12 +20,14 @@ class PipelineConfig:
     # Retrieval
     chunking: str = "paragraph"
     top_k: int = 12  # retriever depth, what the retriever node returns
-    k_ctx: int = 6  # context window, what the generate node is shown
+    k_ctx: int = 4  # context window, what the generate node is shown
+    rerank_alpha: float = 0.7  # dense weight in the rerank blend
 
-    # ADR-004: a chunk ranked strictly below this position inside the context
-    # window counts as effectively not provided when the attributor weighs
-    # blame. k_ctx - 1 means only the last context slot is the tail.
-    use_rank_threshold: int = 5
+    # ADR-004: the last tail_slots positions of the context window are the
+    # tail. A golden chunk sitting in the tail is the confusable territory
+    # where "provided and ignored" and "barely not provided" meet, and the
+    # attributor's blame rule treats tail presence as weak evidence.
+    tail_slots: int = 1
 
     # Attributor evidence thresholds (lexical support is in [0, 1])
     support_used_floor: float = 0.28  # answer plausibly drew on this chunk
@@ -50,8 +52,8 @@ class PipelineConfig:
             raise ValueError(f"unknown chunking strategy: {self.chunking!r}")
         if not 1 <= self.k_ctx <= self.top_k:
             raise ValueError("k_ctx must satisfy 1 <= k_ctx <= top_k")
-        if not 1 <= self.use_rank_threshold <= self.k_ctx:
-            raise ValueError("use_rank_threshold must sit inside the context window")
+        if not 0 <= self.tail_slots < self.k_ctx:
+            raise ValueError("tail_slots must satisfy 0 <= tail_slots < k_ctx")
 
     @property
     def corpus_dir(self) -> Path:
