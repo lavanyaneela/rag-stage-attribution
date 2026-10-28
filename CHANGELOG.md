@@ -5,6 +5,31 @@ Keep a Changelog, and versions are annotated git tags.
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-10-28
+
+### Fixed
+
+Three hostile forensics passes ran before this tag; every finding carries a
+dedicated fix commit naming it.
+
+- Pass one, eight findings: the README example fence quoted a verdict share
+  no run produces (now a tested quotation of the committed capture); release
+  claims named an uncut version; the report and a docstring misplaced the
+  overhead ratio's home; the collector hand-typed two config figures its own
+  docstring forbids; word-numbers and the defense guide escaped the checker;
+  a claimed pinning test did not exist; the guide implied a history arc the
+  timestamps contradict; the quickstart called an installing command offline.
+- Pass two, seven findings: a fix had reintroduced the phantom release
+  sentence; a rewording had orphaned the anchors on the 360-of-360 claim
+  (now anchored and tripwired by test); a word-number survived in the guide;
+  anchors became case insensitive with a liveness gate; the default branch
+  now matches CI and the contributing guide; the coverage figure discloses
+  its excluded denominator; the reverse pass prose states its value-matching
+  limit.
+- Pass three, four WEAKs closed: prose repairs, every dead alternate anchor
+  pruned with liveness raised to per anchor, and the coverage omit list
+  pinned by a test.
+
 ## [0.3.0] - 2026-10-28
 
 ### Added

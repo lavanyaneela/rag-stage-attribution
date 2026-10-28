@@ -91,9 +91,10 @@ all 73 questions per arm.
 - v0.3.0, evidence: README, ADRs, failure modes, rendered diagram,
   captured demo with a manifest of real exit codes, CI with the
   reproducibility gates, community files.
-- The delivery tag is cut only after the forensics passes complete, with
-  the audit findings fixed in dedicated commits whose messages carry the
-  finding, so the audit trail is the log itself.
+- v1.0.0, audited: cut after three forensics passes (eight findings, then
+  seven, then zero FAILs), with the audit findings fixed in dedicated
+  commits whose messages carry the finding, so the audit trail is the log
+  itself.
 
 ## How the demo's claims were measured
 
