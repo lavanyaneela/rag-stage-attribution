@@ -1,0 +1,9 @@
+# Keep the language bar honest: count the data and config languages that carry
+# real content in this repository instead of letting Python swallow everything.
+*.yml linguist-detectable=true
+*.yaml linguist-detectable=true
+*.toml linguist-detectable=true
+*.md linguist-documentation=true
+fixtures/** linguist-vendored=false
+docs/evidence/*.svg -diff
+fixtures/embeddings/*.npz binary

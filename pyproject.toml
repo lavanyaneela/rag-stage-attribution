@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rag-stage-attribution"
+version = "1.0.0"
+description = "Attributes each wrong answer from a RAG pipeline to the stage that actually failed, against injected ground truth"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Lavanya Neela", email = "lavanyaneela@mycvcareer.com" }]
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "faiss-cpu>=1.8",
+    "langchain-core>=0.3",
+    "langgraph>=0.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "pytest-cov>=5",
+    "ruff>=0.6",
+]
+# Only the embedding capture step needs these. The committed fixture under
+# fixtures/embeddings/ is what every experiment and test reads, so a fresh
+# clone never needs this extra and never touches the network.
+capture = [
+    "onnxruntime>=1.18",
+    "tokenizers>=0.19",
+    "huggingface_hub>=0.23",
+]
+# Live adapter extra. Nothing on the default path imports it; see ADR-001.
+live = [
+    "openai>=1.40",
+]
+
+[project.scripts]
+stageattr = "rag_stage_attribution.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM"]
+ignore = ["SIM108"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.coverage.run]
+source = ["src/rag_stage_attribution"]
+# The embedding capture tool needs the capture extra and the live adapter needs
+# a key, so neither can execute in offline CI. Both exclusions are disclosed in
+# the README; everything else is measured.
+omit = [
+    "src/rag_stage_attribution/embeddings/capture.py",
+    "src/rag_stage_attribution/adapters/azure_openai.py",
+]
