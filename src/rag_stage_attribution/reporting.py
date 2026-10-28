@@ -11,23 +11,23 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-EXPERIMENTS_DIR = Path("docs/experiments")
+EXPERIMENTS_DIR = Path(__file__).resolve().parents[2] / "docs" / "experiments"
 
 
-def _load(name: str) -> dict:
-    return json.loads((EXPERIMENTS_DIR / name).read_text(encoding="utf-8"))
+def _load(experiments_dir: Path, name: str) -> dict:
+    return json.loads((experiments_dir / name).read_text(encoding="utf-8"))
 
 
 def _pct(x: float) -> str:
     return f"{100.0 * x:.1f}%"
 
 
-def write_report(out: Path) -> None:
-    e1 = _load("e1_results.json")
-    e2 = _load("e2_results.json")
-    e3 = _load("e3_results.json")
-    e4 = _load("e4_results.json")
-    e5 = _load("e5_results.json")
+def write_report(out: Path, experiments_dir: Path = EXPERIMENTS_DIR) -> None:
+    e1 = _load(experiments_dir, "e1_results.json")
+    e2 = _load(experiments_dir, "e2_results.json")
+    e3 = _load(experiments_dir, "e3_results.json")
+    e4 = _load(experiments_dir, "e4_results.json")
+    e5 = _load(experiments_dir, "e5_results.json")
 
     lines: list[str] = []
     add = lines.append
