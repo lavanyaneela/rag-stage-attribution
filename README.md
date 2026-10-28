@@ -54,7 +54,9 @@ figure in CI.
 
 ## Quickstart
 
-Prerequisites: Python 3.11 or newer, no network needed after cloning.
+Prerequisites: Python 3.11 or newer. The install below fetches packages
+once; after it, nothing here touches the network, and `make verify` runs
+offline from the committed fixtures.
 
 ```bash
 pip install -e ".[dev]"
@@ -96,9 +98,9 @@ reasoning, which is the part a human argues with.
 | no citation contract | 98.6% without the citation contract | 360 of 360 |
 | trace withheld | 61.9% | none of the 360 |
 
-Retrieval blame is read directly off the trace, so the attributor reads 360
-of them without inference: all 360 retrieval-side failures are placed by
-elimination. Generation blame is inference from lexical support and
+Retrieval blame is read directly off the trace: all 360 retrieval-side
+failures are placed without inference, because the trace states what the
+retriever returned and what the rerank kept. Generation blame is inference from lexical support and
 citations, and every error the method makes lives there. The ablation arm
 is the honest price list: node instrumentation is what converts "the
 answer is wrong" into "this stage is wrong".
@@ -108,8 +110,8 @@ answer is wrong" into "this stage is wrong".
 ADR-004 defines the tail: the last slot of the context window, where
 "provided and ignored" and "barely not provided" are nearly the same
 observable event. The attributor treats tail presence as weak evidence on
-purpose. The cost is measured in the table above and priced at its real
-prevalence; the sensitivity arm that widens the tail definition grows the
+purpose. The cost is the 82.4% and the 52.9% in the first screen, priced
+at its real prevalence; the sensitivity arm that widens the tail definition grows the
 class to 46 cases and moves the accuracies little, so the blind spot tracks
 the definition rather than a lucky threshold.
 
@@ -275,7 +277,8 @@ cross it.
 ## Future work
 
 - An attention or logit level use signal behind the adapter boundary, the
-  only route past ADR-005's adversarial limit.
+  only route past ADR-005's adversarial limit; the first metric to watch
+  is confusable class accuracy under an adversarial citation policy.
 - A second corpus domain to test whether the support floors transfer, with
   the floors re-fit per corpus and the transfer gap published.
 - Verdicts over sliced runs (per document, per topic) with the same

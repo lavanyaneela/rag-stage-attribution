@@ -121,7 +121,9 @@ opposite direction is documented: the first parametric answers were too
 easy to detect lexically, so I rebuilt them as paraphrases of the policy
 sentence with the wrong payload, which is what a model misremembering a
 policy sounds like, and accuracy on the tail class fell to a coin flip
-without the contract. The commit history shows the hardening.
+without the contract. The hardening is in the log as named fix commits
+and in the difficulty tests that pin what the redesign bought; the build
+itself was a continuous sprint, which the log's timestamps show honestly.
 
 **"Why should I trust the citation contract as a mitigation?"** Only as
 far as ADR-005 trusts it: it converts most tail-ignored failures into
