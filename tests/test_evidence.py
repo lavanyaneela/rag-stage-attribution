@@ -101,3 +101,20 @@ def test_set_handle_rejects_an_invalid_handle():
         text=True,
     )
     assert result.returncode == 1
+
+
+def test_the_readme_example_fence_is_a_quotation_of_the_captured_transcript():
+    """Pins audit finding 1: the README once showed a verdict share no run
+    produces (a hand typed 73 where every real run prints 69), hidden in a
+    code fence the reverse pass exempts. The fence is now held to the
+    committed capture line by line, so an example output that drifts from
+    the transcript fails the build instead of greeting a reviewer."""
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    capture = (ROOT / "docs" / "evidence" / "demo-capture.txt").read_text(encoding="utf-8")
+    marker = "## What one run looks like"
+    section = readme.split(marker, 1)[1]
+    fence = section.split("```text", 1)[1].split("```", 1)[0]
+    lines = [line for line in fence.splitlines() if line.strip()]
+    assert len(lines) >= 4
+    for line in lines:
+        assert line in capture, f"README example line not in the captured transcript: {line!r}"

@@ -73,12 +73,16 @@ capture this README quotes.
 `stageattr run` pushes all 73 questions through the pipeline under a seeded
 injection mix, scores each answer against its golden key phrase, labels
 every failure with mechanical ground truth, and attributes it from the
-trace. `stageattr verdict` then answers the question a team actually asks:
+trace. `stageattr verdict` then answers the question a team actually asks;
+the block below is quoted from the committed demo capture, and a test holds
+the quotation to the transcript:
 
 ```text
+$ stageattr verdict --run /tmp/demo_run.json
 verdict: generation
-detail:  generation owns 73% of attributable failures and its lower
-         bound clears retrieval's upper bound
+detail:  generation owns 69% of attributable failures and its lower bound clears retrieval's upper bound
+  generation: 69.2% (95% CI 60.0% to 77.4%)
+  retrieval: 30.8% (95% CI 22.6% to 40.0%)
 ```
 
 `stageattr attribute --run run.json --qid q012` prints the per failure
