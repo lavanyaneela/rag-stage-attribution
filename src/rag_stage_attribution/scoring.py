@@ -17,7 +17,14 @@ _KEEP = re.compile(r"[a-z0-9$.%]+")
 
 
 def normalise(text: str) -> str:
-    return " ".join(_KEEP.findall(text.lower()))
+    """Lowercase, keep payload characters, and strip edge periods per token.
+
+    The edge strip exists because of a measured bug: a payload ending a
+    sentence tokenised as '$25.' and failed a word boundary match against
+    '$25', so a faithful answer scored wrong whenever its fact closed the
+    sentence. Interior dots survive, which '$0.62' depends on.
+    """
+    return " ".join(token.strip(".") for token in _KEEP.findall(text.lower()))
 
 
 def is_correct(answer: str, key_phrase: str) -> bool:

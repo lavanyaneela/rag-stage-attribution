@@ -35,7 +35,21 @@ _PATTERN = re.compile(
 
 
 def rewrite_query(query: str) -> str:
-    return _PATTERN.sub(lambda m: REWRITE_TABLE[m.group(1)], query)
+    """Expand acronyms, idempotently: an already-expanded occurrence is left
+    alone, so applying the rewrite twice equals applying it once. The capture
+    tool and the pipeline must agree byte for byte on the rewritten form, and
+    idempotence removes a whole class of ways they could not."""
+
+    def expand(match: re.Match[str]) -> str:
+        token = match.group(1)
+        expansion = REWRITE_TABLE[token]
+        suffix = expansion[len(token):]
+        after = match.string[match.end() : match.end() + len(suffix)]
+        if after == suffix:
+            return token
+        return expansion
+
+    return _PATTERN.sub(expand, query)
 
 
 def rewrite_table_sha() -> str:
