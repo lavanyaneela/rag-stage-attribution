@@ -1,0 +1,15 @@
+{
+  "model_repo": "sentence-transformers/all-MiniLM-L6-v2",
+  "model_onnx_sha256_16": "6fd5d72fe4589f18",
+  "pooling": "attention-mask weighted mean, L2 normalised",
+  "max_tokens": 256,
+  "dims": 384,
+  "captured_utc": "2026-10-28",
+  "rewrite_table_sha": "31888696131e9d26",
+  "chunk_digests": {
+    "paragraph": "eef1df29ac9368ec",
+    "window2": "fdb0a3e550fe8b7f",
+    "fixed160": "f80ff3084be047f8"
+  },
+  "query_digest": "8fd26df0ed443cfd"
+}
