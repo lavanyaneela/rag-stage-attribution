@@ -76,8 +76,9 @@ def write_report(out: Path, experiments_dir: Path = EXPERIMENTS_DIR) -> None:
     add("")
     add(f"Trace size: {e5['trace_records_per_question']} records and "
         f"{e5['trace_bytes_per_question_median']} bytes per question (median). "
-        "The wall time overhead ratio lives in docs/metrics.json and is asserted by a test "
-        "rather than quoted here, because a duration is a fact about the runner.")
+        "The wall time overhead ratio lives in docs/experiments/e5_overhead.json "
+        "and is asserted by a test rather than quoted here, because a duration "
+        "is a fact about the runner.")
     add("")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(lines) + "\n", encoding="utf-8")

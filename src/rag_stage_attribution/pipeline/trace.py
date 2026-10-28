@@ -2,8 +2,9 @@
 
 Cost is published as counts and ratios: records per question and bytes per
 question are exact and machine independent, so they can be anchored in prose.
-Wall time overhead is a fact about the runner; it stays in metrics.json and a
-test asserts the inequality instead (receipts rule 6).
+Wall time overhead is a fact about the runner; it stays in the committed
+capture at docs/experiments/e5_overhead.json and a test asserts the
+inequality instead (receipts rule 6).
 """
 
 from __future__ import annotations

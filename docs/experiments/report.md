@@ -39,5 +39,5 @@ Recall gained 6.8 points; end to end accuracy gained 3.5 points.
 
 ## E5: what node instrumentation costs
 
-Trace size: 4 records and 1688 bytes per question (median). The wall time overhead ratio lives in docs/metrics.json and is asserted by a test rather than quoted here, because a duration is a fact about the runner.
+Trace size: 4 records and 1688 bytes per question (median). The wall time overhead ratio lives in docs/experiments/e5_overhead.json and is asserted by a test rather than quoted here, because a duration is a fact about the runner.
 
