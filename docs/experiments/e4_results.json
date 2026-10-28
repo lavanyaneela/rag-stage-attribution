@@ -1,0 +1,87 @@
+{
+ "arms": [
+  {
+   "chunks": 112,
+   "failures": 1172,
+   "strategy": "paragraph",
+   "truth_counts": {
+    "generation": 812,
+    "retrieval_miss": 120,
+    "retrieval_rank": 240
+   },
+   "truth_mix": {
+    "generation": 0.6928327645051194,
+    "retrieval_miss": 0.10238907849829351,
+    "retrieval_rank": 0.20477815699658702
+   }
+  },
+  {
+   "chunks": 90,
+   "failures": 1111,
+   "strategy": "window2",
+   "truth_counts": {
+    "generation": 871,
+    "retrieval_miss": 120,
+    "retrieval_rank": 120
+   },
+   "truth_mix": {
+    "generation": 0.783978397839784,
+    "retrieval_miss": 0.10801080108010801,
+    "retrieval_rank": 0.10801080108010801
+   }
+  },
+  {
+   "chunks": 44,
+   "failures": 1077,
+   "strategy": "fixed160",
+   "truth_counts": {
+    "generation": 897,
+    "retrieval_miss": 90,
+    "retrieval_rank": 90
+   },
+   "truth_mix": {
+    "generation": 0.8328690807799443,
+    "retrieval_miss": 0.08356545961002786,
+    "retrieval_rank": 0.08356545961002786
+   }
+  }
+ ],
+ "mix": {
+  "abstain": 0.05,
+  "faithful": 0.55,
+  "ignore": 0.25,
+  "wrong_chunk": 0.15
+ },
+ "seeds": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30
+ ]
+}

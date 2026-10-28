@@ -1,0 +1,105 @@
+{
+ "arms": [
+  {
+   "accuracy": 0.9948805460750854,
+   "cannot_attribute": 0,
+   "failures": 1172,
+   "label": "default (contract on, trace on)",
+   "per_class": {
+    "generation": {
+     "n": 812,
+     "recovered": 806
+    },
+    "retrieval_miss": {
+     "n": 120,
+     "recovered": 120
+    },
+    "retrieval_rank": {
+     "n": 240,
+     "recovered": 240
+    }
+   },
+   "recovered": 1166
+  },
+  {
+   "accuracy": 0.9863481228668942,
+   "cannot_attribute": 0,
+   "failures": 1172,
+   "label": "no citation contract",
+   "per_class": {
+    "generation": {
+     "n": 812,
+     "recovered": 796
+    },
+    "retrieval_miss": {
+     "n": 120,
+     "recovered": 120
+    },
+    "retrieval_rank": {
+     "n": 240,
+     "recovered": 240
+    }
+   },
+   "recovered": 1156
+  },
+  {
+   "accuracy": 0.6186006825938567,
+   "cannot_attribute": 101,
+   "failures": 1172,
+   "label": "no trace (ablation)",
+   "per_class": {
+    "generation": {
+     "n": 812,
+     "recovered": 725
+    },
+    "retrieval_miss": {
+     "n": 120,
+     "recovered": 0
+    },
+    "retrieval_rank": {
+     "n": 240,
+     "recovered": 0
+    }
+   },
+   "recovered": 725
+  }
+ ],
+ "mix": {
+  "abstain": 0.05,
+  "faithful": 0.55,
+  "ignore": 0.25,
+  "wrong_chunk": 0.15
+ },
+ "seeds": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30
+ ]
+}

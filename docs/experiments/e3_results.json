@@ -1,0 +1,62 @@
+{
+ "arms": [
+  {
+   "e2e_accuracy": 0.4648401826484018,
+   "failures": 1172,
+   "generation_share": 0.6928327645051194,
+   "k_ctx": 4,
+   "label": "baseline retriever (k_ctx=4)",
+   "questions": 73,
+   "recall_at_ctx": 0.8356164383561644
+  },
+  {
+   "e2e_accuracy": 0.4995433789954338,
+   "failures": 1096,
+   "generation_share": 0.8083941605839416,
+   "k_ctx": 6,
+   "label": "improved retriever (k_ctx=6)",
+   "questions": 73,
+   "recall_at_ctx": 0.9041095890410958
+  }
+ ],
+ "e2e_gain_pp": 3.470319634703195,
+ "mix": {
+  "abstain": 0.05,
+  "faithful": 0.55,
+  "ignore": 0.25,
+  "wrong_chunk": 0.15
+ },
+ "recall_gain_pp": 6.849315068493144,
+ "seeds": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30
+ ]
+}
