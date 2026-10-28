@@ -43,7 +43,7 @@ heuristic. At 112 paragraph chunks, speed is irrelevant.
 **Why the corpus is hand built and hostile.** The first corpus was too easy
 and retrieval never failed, which made half the experiments vacuous. The
 committed one has distractor pairs that share vocabulary and disagree on
-payloads, six pure distractor documents, and 73 golden questions rewritten
+payloads, 6 pure distractor documents, and 73 golden questions rewritten
 into user voice so query vocabulary drifts the way real questions do.
 
 **Why the golden label is a span, not a chunk id.** Chunk ids are artifacts
@@ -72,7 +72,7 @@ all 73 questions per arm.
   class to 46 cases and moves accuracy little: the blind spot tracks the
   definition, which is the point of publishing the sensitivity arms.
 - **Decoupling, E3.** Recall sat at 83.6% at baseline; the wider window
-  lifts recall at context to 90.4%, and those 6.8 points of recall bought
+  lifts recall at context to 90.4%; those 6.8 points of recall bought
   3.5 points end to end, and generation's share of the remaining failures rises to
   80.8%. This is the slide for "why did fixing the retriever not fix the
   product".
