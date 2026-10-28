@@ -157,13 +157,13 @@ def reverse_pass(metrics: dict[str, dict], readme: str) -> list[str]:
     return problems
 
 
-def exemption_hygiene(readme: str) -> list[str]:
-    """Every context exemption must be exercised by the real README; an
-    exemption nothing uses is a hole waiting for a claim."""
-    text = _strip_code(readme)
+def exemption_hygiene(texts: list[str]) -> list[str]:
+    """Every context exemption must be exercised somewhere the reverse pass
+    runs; an exemption nothing uses is a hole waiting for a claim."""
+    stripped = [_strip_code(text) for text in texts]
     problems = []
     for name, pattern in CONTEXT_EXEMPTIONS.items():
-        if not re.search(pattern, text):
+        if not any(re.search(pattern, text) for text in stripped):
             problems.append(f"unused exemption {name!r}: remove it or use it")
     return problems
 
@@ -197,10 +197,20 @@ def run_checks(documents: dict[str, str] | None = None) -> list[str]:
                 documents[rel] = path.read_text(encoding="utf-8")
     problems = check_anchor_containment(metrics)
     problems += forward_pass(metrics, documents)
+    reverse_docs = [n for n in ("README.md", "docs/defense-guide.md") if n in documents]
     if "README.md" in documents:
         problems += required_presence(metrics, documents["README.md"])
-        problems += reverse_pass(metrics, documents["README.md"])
-        problems += exemption_hygiene(documents["README.md"])
+    if reverse_docs:
+        problems += exemption_hygiene([documents[n] for n in reverse_docs])
+    # The reverse pass covers every document that makes quantitative claims
+    # a reader will quote: a number in the README or the defense guide that
+    # belongs to no metric is an invented figure (audit finding 5).
+    for name in reverse_docs:
+        if True:
+            problems += [
+                p.replace("README.md:", f"{name}:") for p in
+                reverse_pass(metrics, documents[name])
+            ]
     problems += duration_sweep()
     return problems
 

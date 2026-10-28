@@ -71,9 +71,9 @@ all 73 questions per arm.
   interval from 35.1% up to 70.2%. Widening the tail definition grows the
   class to 46 cases and moves accuracy little: the blind spot tracks the
   definition, which is the point of publishing the sensitivity arms.
-- **Decoupling, E3.** Widening the context window lifted recall at context
-  from 83.6% to 90.4%; those 6.8 points of recall bought 3.5 points end
-  to end, and generation's share of the remaining failures rises to
+- **Decoupling, E3.** Recall sat at 83.6% at baseline; the wider window
+  lifts recall at context to 90.4%, and those 6.8 points of recall bought
+  3.5 points end to end, and generation's share of the remaining failures rises to
   80.8%. This is the slide for "why did fixing the retriever not fix the
   product".
 - **Chunking, E4.** Paragraph chunking carries 10.2% of blame on retrieval
@@ -109,7 +109,7 @@ lists every command with the exit code it really returned.
 
 ## Questions an interviewer will ask, and the answers
 
-**"Your accuracy is 99.5%. Is the problem real?"** The headline is propped
+**"It recovers the cause in 99.5% of cases. Is the problem real?"** The headline is propped
 up by the trace: retrieval blame is elimination, not inference. The real
 problem lives in the two honest numbers next to it: 52.9% with the
 contract off on the confusable class, and 61.9% with the trace withheld.

@@ -116,8 +116,8 @@ the definition rather than a lucky threshold.
 ## Tuning the retriever does not fix a generation problem (E3)
 
 The baseline pipeline answers 46.5% correctly with recall at context of
-83.6%. One knob turns: the context window widens from a window of 4 chunks
-to six. Recall rises, failures fall, and the failure mix shifts: 69.3% of
+83.6%. One knob turns: the context window widens from 4 chunks kept
+to 6 chunks kept. Recall rises, failures fall, and the failure mix shifts: 69.3% of
 failures already belonged to the generator at baseline, and the share
 rises to 80.8% after the retriever improves. The decoupling is the point:
 recall is a retrieval metric, and spending it on a generation problem buys
@@ -183,7 +183,7 @@ confusable on purpose:
   general expense policy against travel exceptions, on-call rotation
   against incident escalation, vendor security review against vendor
   onboarding.
-- Six pure distractor documents with no golden questions, so dense ranks
+- 6 pure distractor documents with no golden questions, so dense ranks
   are crowded by plausible neighbours.
 - 73 golden questions written in user voice, so the query vocabulary
   drifts from the corpus vocabulary the way real questions do.

@@ -90,11 +90,27 @@ def test_no_anchor_is_contained_in_another_metrics_anchor():
     assert check_anchor_containment(load_metrics()) == []
 
 
-def test_every_context_exemption_is_used_by_the_real_readme():
+def test_every_context_exemption_is_used_by_the_reverse_passed_documents():
     # Rule: an unused exemption is a hole. The hygiene check runs against the
-    # real README, where an exercised exemption is the only passing state.
-    readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    assert check_numbers.exemption_hygiene(readme) == []
+    # documents the reverse pass covers; an exemption none of them exercises
+    # is dead weight waiting to hide a claim.
+    texts = [
+        (ROOT / "README.md").read_text(encoding="utf-8"),
+        (ROOT / "docs" / "defense-guide.md").read_text(encoding="utf-8"),
+    ]
+    assert check_numbers.exemption_hygiene(texts) == []
+
+
+def test_the_reverse_pass_covers_the_defense_guide_too():
+    # Pins audit finding 5: the guide promised it could not drift while only
+    # the README was reverse passed. An invented figure in the guide must now
+    # be a build failure, not a coincidence.
+    metrics = load_metrics()
+    problems = check_numbers.run_checks(
+        {"docs/defense-guide.md": "The guide invents 4242 llamas here."}
+    )
+    del metrics
+    assert any("4242" in p and "defense-guide" in p for p in problems)
 
 
 def test_no_exemption_pattern_equals_a_rendered_metric_value():
