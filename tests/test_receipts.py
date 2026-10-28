@@ -138,7 +138,9 @@ def test_the_duration_sweep_covers_every_tracked_markdown_file():
 
 def test_metrics_json_is_regenerated_deterministically():
     # Guarded on the count files existing so this test can never recursively
-    # spawn the suite it is part of; under `make verify` they always exist.
+    # spawn the suite it is part of. On the very first `make verify` of a
+    # fresh clone they do not exist yet, so the byte-equality check runs
+    # from the second verify onward; CI's git-diff gate covers the first.
     import pytest
 
     if not (ROOT / "junit.xml").exists() or not (ROOT / "coverage.json").exists():
@@ -169,3 +171,19 @@ def test_the_trace_recovers_every_retrieval_side_failure_in_the_committed_captur
     metrics = load_metrics()
     recovered = metrics["retrieval_recovered_n"]["rendered"]
     assert recovered == metrics["retrieval_failures_n"]["rendered"]
+
+
+def test_the_coverage_denominator_excludes_exactly_the_two_network_gated_modules():
+    """Pins audit pass 3's word-count finding: the README says 'the two
+    network gated modules' are excluded from the coverage denominator, and a
+    word is invisible to the number checker. The omit list is pinned here so
+    a third exclusion cannot slip in and quietly falsify both the sentence
+    and the published coverage figure's meaning."""
+    import tomllib
+
+    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
+    omit = sorted(pyproject["tool"]["coverage"]["run"]["omit"])
+    assert omit == [
+        "src/rag_stage_attribution/adapters/azure_openai.py",
+        "src/rag_stage_attribution/embeddings/capture.py",
+    ]

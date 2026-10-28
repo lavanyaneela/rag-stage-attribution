@@ -47,7 +47,7 @@ the other cases live and what props the number up:
   the failures that remain belong to the generator, which no vector
   database setting will touch.
 
-Credibility line: 215 tests, 98.8% line coverage, every figure above
+Credibility line: 216 tests, 98.8% line coverage, every figure above
 re-derived by `make verify` from committed experiment outputs, and the
 checker that enforces it is demonstrated failing on a deliberately broken
 figure in CI. The coverage denominator excludes the two network gated
@@ -75,7 +75,7 @@ capture this README quotes.
 ## What one run looks like
 
 `stageattr run` pushes all 73 questions through the pipeline under a seeded
-injection mix: the retriever returns 12 candidates, the rerank keeps a
+injection mix. The retriever returns 12 candidates, the rerank keeps a
 window of 4 chunks, the stand-in answers under its injected mode, and each
 answer is scored against its golden key phrase, labelled with mechanical
 ground truth, and attributed from the trace. `stageattr verdict` then answers the question a team actually asks;
@@ -98,12 +98,12 @@ reasoning, which is the part a human argues with.
 | arm | accuracy over failures | retrieval-side failures recovered |
 | --- | --- | --- |
 | default, trace on | 99.5% | 360 of 360 |
-| no citation contract | 98.6% without the citation contract | 360 of 360 |
+| no citation contract | 98.6% | 360 of 360 |
 | trace withheld | 61.9% | none of the 360 |
 
-Retrieval blame is read directly off the trace: it recovered 360 of the
-360 retrieval-side failures without inference, because the trace states
-what the retriever returned and what the rerank kept. Generation blame is inference from lexical support and
+Retrieval blame is read directly off the trace: the attributor recovered
+360 of the 360 retrieval-side failures without inference, because the
+trace states what the retriever returned and what the rerank kept. Generation blame is inference from lexical support and
 citations, and every error the method makes lives there. The ablation arm
 is the honest price list: node instrumentation is what converts "the
 answer is wrong" into "this stage is wrong".
@@ -246,7 +246,8 @@ re-measure every published figure from machine readable sources and fail
 the build on a mismatch; the checker matches anchored phrases rather than
 bare digits, sweeps inside code fences, and runs a reverse pass over this
 README and the defense guide that flags any number matching no metric's
-rendered value. Value matching is the honest limit: a number that happens
+rendered value, after stripping the small set of declared context
+exemptions (dates, versions, exit codes and their kin). Value matching is the honest limit: a number that happens
 to equal a measured value passes on the value alone, which is why the
 claims that matter also carry anchors and tests. `tools/prove_checker.py`
 breaks a figure on purpose and shows the failure, because a checker nobody

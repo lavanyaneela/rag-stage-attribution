@@ -172,19 +172,18 @@ def exemption_hygiene(texts: list[str]) -> list[str]:
 
 
 def metric_liveness(metrics: dict[str, dict], documents: dict[str, str]) -> list[str]:
-    """Every metric must be stated, under one of its anchors, in at least
-    one checked document. A metric with no live anchor is a tripwire that
-    has come unwired: its value regenerates forever while no sentence is
-    held to it (audit pass 2, N2 and N4)."""
+    """Every anchor must match at least one checked document. A dead anchor
+    is a tripwire that has come unwired: a rewording that orphans it passes
+    silently while the sentence it guarded drifts (audit passes 2 and 3).
+    Anchor-level, not metric-level, because a metric with one live sibling
+    anchor can still lose the exact occurrence that mattered."""
     problems = []
     for name, metric in metrics.items():
-        live = any(
-            anchor_pattern(anchor).search(text)
-            for anchor in metric["anchors"]
-            for text in documents.values()
-        )
-        if not live:
-            problems.append(f"metric {name} has no live anchor in any checked document")
+        for anchor in metric["anchors"]:
+            if not any(anchor_pattern(anchor).search(text) for text in documents.values()):
+                problems.append(
+                    f"dead anchor {anchor!r} on metric {name}: no checked document uses it"
+                )
     return problems
 
 
@@ -227,11 +226,10 @@ def run_checks(documents: dict[str, str] | None = None) -> list[str]:
     # a reader will quote: a number in the README or the defense guide that
     # belongs to no metric is an invented figure (audit finding 5).
     for name in reverse_docs:
-        if name in documents:
-            problems += [
-                p.replace("README.md:", f"{name}:") for p in
-                reverse_pass(metrics, documents[name])
-            ]
+        problems += [
+            p.replace("README.md:", f"{name}:")
+            for p in reverse_pass(metrics, documents[name])
+        ]
     problems += duration_sweep()
     return problems
 

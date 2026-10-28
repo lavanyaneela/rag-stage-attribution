@@ -20,8 +20,7 @@
  },
  "attribution_accuracy_pct": {
   "anchors": [
-   "recovers the cause in {}%",
-   "recovers the true stage in {}%"
+   "recovers the cause in {}%"
   ],
   "rendered": "99.5"
  },
@@ -39,7 +38,6 @@
  },
  "confusable_accuracy_pct": {
   "anchors": [
-   "{}% on that class",
    "{}% with the contract on"
   ],
   "rendered": "82.4"
@@ -58,8 +56,7 @@
  },
  "confusable_n": {
   "anchors": [
-   "{} tail-ignored failures",
-   "the {} cases"
+   "{} tail-ignored failures"
   ],
   "rendered": "34"
  },
@@ -78,7 +75,6 @@
  },
  "corpus_chunks": {
   "anchors": [
-   "{} chunks under the default strategy",
    "{} paragraph chunks"
   ],
   "rendered": "112"
@@ -91,8 +87,7 @@
  },
  "corpus_docs": {
   "anchors": [
-   "{} committed documents",
-   "{} handbook documents"
+   "{} committed documents"
   ],
   "rendered": "22"
  },
@@ -123,15 +118,13 @@
  },
  "embedding_dims": {
   "anchors": [
-   "{} dimensional",
-   "{} dims"
+   "{} dimensional"
   ],
   "rendered": "384"
  },
  "failures_judged": {
   "anchors": [
-   "{} injected failures",
-   "{} failures it judged"
+   "{} injected failures"
   ],
   "rendered": "1172"
  },
@@ -163,7 +156,6 @@
  "golden_questions": {
   "anchors": [
    "{} golden questions",
-   "{} user-voice questions",
    "all {} questions"
   ],
   "rendered": "73"
@@ -183,7 +175,7 @@
  },
  "no_contract_accuracy_pct": {
   "anchors": [
-   "{}% without the citation contract"
+   "contract | {}%"
   ],
   "rendered": "98.6"
  },
@@ -202,7 +194,6 @@
  },
  "recall_improved_pct": {
   "anchors": [
-   "recall to {}%",
    "lifts recall at context to {}%"
   ],
   "rendered": "90.4"
@@ -222,8 +213,7 @@
  },
  "seeds": {
   "anchors": [
-   "{} seeds",
-   "across {} seeded runs"
+   "{} seeds"
   ],
   "rendered": "30"
  },
@@ -231,12 +221,11 @@
   "anchors": [
    "{} tests"
   ],
-  "rendered": "215"
+  "rendered": "216"
  },
  "top_k": {
   "anchors": [
-   "retriever returns {}",
-   "top {} candidates"
+   "retriever returns {}"
   ],
   "rendered": "12"
  },

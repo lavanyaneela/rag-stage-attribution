@@ -101,15 +101,15 @@ def build_metrics() -> dict:
     metrics: dict[str, dict] = {
         "golden_questions": {
             "rendered": str(len(golden_lines)),
-            "anchors": ["{} golden questions", "{} user-voice questions", "all {} questions"],
+            "anchors": ["{} golden questions", "all {} questions"],
         },
         "corpus_docs": {
             "rendered": str(corpus_docs),
-            "anchors": ["{} committed documents", "{} handbook documents"],
+            "anchors": ["{} committed documents"],
         },
         "corpus_chunks": {
             "rendered": str(paragraph_arm["chunks"]),
-            "anchors": ["{} chunks under the default strategy", "{} paragraph chunks"],
+            "anchors": ["{} paragraph chunks"],
         },
         "corpus_chunks_fixed": {
             "rendered": str(fixed_arm["chunks"]),
@@ -129,23 +129,23 @@ def build_metrics() -> dict:
         },
         "embedding_dims": {
             "rendered": str(manifest["dims"]),
-            "anchors": ["{} dimensional", "{} dims"],
+            "anchors": ["{} dimensional"],
         },
         "seeds": {
             "rendered": str(len(e1["seeds"])),
-            "anchors": ["{} seeds", "across {} seeded runs"],
+            "anchors": ["{} seeds"],
         },
         "failures_judged": {
             "rendered": str(default_arm["failures"]),
-            "anchors": ["{} injected failures", "{} failures it judged"],
+            "anchors": ["{} injected failures"],
         },
         "attribution_accuracy_pct": {
             "rendered": _pct(default_arm["accuracy"]),
-            "anchors": ["recovers the cause in {}%", "recovers the true stage in {}%"],
+            "anchors": ["recovers the cause in {}%"],
         },
         "no_contract_accuracy_pct": {
             "rendered": _pct(no_contract_arm["accuracy"]),
-            "anchors": ["{}% without the citation contract"],
+            "anchors": ["contract | {}%"],
         },
         "ablation_accuracy_pct": {
             "rendered": _pct(ablation_arm["accuracy"]),
@@ -169,7 +169,7 @@ def build_metrics() -> dict:
         },
         "confusable_accuracy_pct": {
             "rendered": _pct(conf_on["accuracy"]),
-            "anchors": ["{}% on that class", "{}% with the contract on"],
+            "anchors": ["{}% with the contract on"],
         },
         "confusable_off_accuracy_pct": {
             "rendered": _pct(conf_off["accuracy"]),
@@ -177,7 +177,7 @@ def build_metrics() -> dict:
         },
         "confusable_n": {
             "rendered": str(conf_on["n"]),
-            "anchors": ["{} tail-ignored failures", "the {} cases"],
+            "anchors": ["{} tail-ignored failures"],
         },
         "confusable_ci_low_pct": {
             "rendered": _pct(conf_off["ci"][0]),
@@ -193,7 +193,7 @@ def build_metrics() -> dict:
         },
         "recall_improved_pct": {
             "rendered": _pct(improved["recall_at_ctx"]),
-            "anchors": ["recall to {}%", "lifts recall at context to {}%"],
+            "anchors": ["lifts recall at context to {}%"],
         },
         "recall_gain_pp": {
             "rendered": f"{e3['recall_gain_pp']:.1f}",
@@ -241,7 +241,7 @@ def build_metrics() -> dict:
         },
         "top_k": {
             "rendered": str(PipelineConfig().top_k),
-            "anchors": ["retriever returns {}", "top {} candidates"],
+            "anchors": ["retriever returns {}"],
         },
         "k_ctx": {
             "rendered": str(PipelineConfig().k_ctx),
