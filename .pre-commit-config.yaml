@@ -1,0 +1,12 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.9
+    hooks:
+      - id: ruff
+  - repo: local
+    hooks:
+      - id: no-em-dashes
+        name: no em dashes anywhere
+        entry: bash -c 'if grep -rPIl "\x{2014}|\x{2013}" --exclude-dir=.git --exclude-dir=node_modules .; then exit 1; fi'
+        language: system
+        pass_filenames: false

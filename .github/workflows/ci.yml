@@ -1,0 +1,97 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install
+        run: pip install -e ".[dev]"
+      - name: Lint
+        run: ruff check src tests experiments tools
+      - name: Tests with coverage floor
+        run: |
+          python -m pytest --junitxml=junit.xml \
+            --cov=rag_stage_attribution --cov-report=json --cov-report=term \
+            --cov-fail-under=95
+      - name: Published test count equals the collected count
+        run: |
+          python - <<'EOF'
+          import json
+          import xml.etree.ElementTree as ET
+          suite = ET.parse("junit.xml").getroot()
+          node = suite if suite.tag == "testsuite" else suite.find("testsuite")
+          collected = int(node.attrib["tests"])
+          published = int(json.load(open("docs/metrics.json"))["tests_total"]["rendered"])
+          assert collected == published, f"collected {collected} != published {published}"
+          print(f"test count check: collected == published == {collected}")
+          EOF
+      - name: Receipts re-measure every published figure
+        run: |
+          python tools/collect_metrics.py
+          git diff --exit-code docs/metrics.json
+          python tools/check_numbers.py
+      - name: Prove the checker fails a broken figure
+        run: python tools/prove_checker.py
+      - name: Experiment outputs are byte reproducible
+        if: matrix.python-version == '3.13'
+        run: |
+          make experiments
+          git diff --exit-code docs/experiments/
+      - name: Report matches a fresh render
+        run: |
+          python -m rag_stage_attribution.cli report --out /tmp/report.md
+          diff /tmp/report.md docs/experiments/report.md
+      - name: Verdict demo (the exit code is the interface)
+        run: |
+          python -m rag_stage_attribution.cli verdict --run docs/experiments/e1_runs.json; code=$?
+          echo "verdict exit code: $code"
+          test "$code" -eq 0
+      - name: Job summary, the awkward table included
+        if: always()
+        run: |
+          {
+            echo "## Attribution accuracy (E1)"
+            echo ""
+            echo "| arm | accuracy | failures |"
+            echo "| --- | --- | --- |"
+            python - <<'EOF'
+          import json
+          for arm in json.load(open("docs/experiments/e1_results.json"))["arms"]:
+              print(f"| {arm['label']} | {100*arm['accuracy']:.1f}% | {arm['failures']} |")
+          EOF
+            echo ""
+            echo "## The confusable class (E2), the awkward one"
+            echo ""
+            echo "| arm | accuracy | n | 95% CI |"
+            echo "| --- | --- | --- | --- |"
+            python - <<'EOF'
+          import json
+          for arm in json.load(open("docs/experiments/e2_results.json"))["arms"]:
+              low, high = arm["ci"]
+              print(f"| {arm['label']} | {100*arm['accuracy']:.1f}% | {arm['n']} | "
+                    f"{100*low:.1f}% to {100*high:.1f}% |")
+          EOF
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload run artifacts
+        if: matrix.python-version == '3.13'
+        uses: actions/upload-artifact@v4
+        with:
+          name: experiment-outputs
+          path: |
+            docs/experiments/
+            docs/metrics.json
+            junit.xml
+            coverage.json
