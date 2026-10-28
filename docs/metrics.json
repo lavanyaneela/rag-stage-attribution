@@ -1,0 +1,221 @@
+{
+ "ablation_accuracy_pct": {
+  "anchors": [
+   "{}% with the trace withheld",
+   "falls to {}%"
+  ],
+  "rendered": "61.9"
+ },
+ "ablation_cannot_attribute": {
+  "anchors": [
+   "{} failures as unattributable"
+  ],
+  "rendered": "101"
+ },
+ "ablation_retrieval_recovered": {
+  "anchors": [
+   "places exactly {} of the",
+   "{} of the 360"
+  ],
+  "rendered": "0"
+ },
+ "attribution_accuracy_pct": {
+  "anchors": [
+   "recovers the cause in {}%",
+   "recovers the true stage in {}%"
+  ],
+  "rendered": "99.5"
+ },
+ "chunking_miss_fixed_pct": {
+  "anchors": [
+   "moves it to {}%"
+  ],
+  "rendered": "8.4"
+ },
+ "chunking_miss_paragraph_pct": {
+  "anchors": [
+   "{}% of blame on retrieval misses"
+  ],
+  "rendered": "10.2"
+ },
+ "confusable_accuracy_pct": {
+  "anchors": [
+   "{}% on that class",
+   "{}% with the contract on"
+  ],
+  "rendered": "82.4"
+ },
+ "confusable_ci_high_pct": {
+  "anchors": [
+   "up to {}%"
+  ],
+  "rendered": "70.2"
+ },
+ "confusable_ci_low_pct": {
+  "anchors": [
+   "interval from {}%"
+  ],
+  "rendered": "35.1"
+ },
+ "confusable_n": {
+  "anchors": [
+   "{} tail-ignored failures",
+   "the {} cases"
+  ],
+  "rendered": "34"
+ },
+ "confusable_off_accuracy_pct": {
+  "anchors": [
+   "drops to {}%",
+   "{}% with the contract off"
+  ],
+  "rendered": "52.9"
+ },
+ "corpus_chunks": {
+  "anchors": [
+   "{} chunks under the default strategy",
+   "{} paragraph chunks"
+  ],
+  "rendered": "112"
+ },
+ "corpus_docs": {
+  "anchors": [
+   "{} committed documents",
+   "{} handbook documents"
+  ],
+  "rendered": "22"
+ },
+ "coverage_line_pct": {
+  "anchors": [
+   "{}% line coverage"
+  ],
+  "rendered": "92.2"
+ },
+ "e2e_accuracy_baseline_pct": {
+  "anchors": [
+   "answers {}% correctly"
+  ],
+  "rendered": "46.5"
+ },
+ "e2e_gain_pp": {
+  "anchors": [
+   "{} points end to end",
+   "bought {} points"
+  ],
+  "rendered": "3.5"
+ },
+ "embedding_dims": {
+  "anchors": [
+   "{} dimensional",
+   "{} dims"
+  ],
+  "rendered": "384"
+ },
+ "failures_judged": {
+  "anchors": [
+   "{} injected failures",
+   "{} failures it judged"
+  ],
+  "rendered": "1172"
+ },
+ "generation_share_baseline_pct": {
+  "anchors": [
+   "{}% of failures already belonged"
+  ],
+  "rendered": "69.3"
+ },
+ "generation_share_improved_pct": {
+  "anchors": [
+   "{}% of the failures that remain",
+   "rises to {}%"
+  ],
+  "rendered": "80.8"
+ },
+ "golden_questions": {
+  "anchors": [
+   "{} golden questions",
+   "{} user-voice questions",
+   "all {} questions"
+  ],
+  "rendered": "73"
+ },
+ "k_ctx": {
+  "anchors": [
+   "window of {} chunks",
+   "{} chunk context window"
+  ],
+  "rendered": "4"
+ },
+ "no_contract_accuracy_pct": {
+  "anchors": [
+   "{}% without the citation contract"
+  ],
+  "rendered": "98.6"
+ },
+ "recall_at_ctx_pct": {
+  "anchors": [
+   "recall at context of {}%",
+   "recall sat at {}%"
+  ],
+  "rendered": "83.6"
+ },
+ "recall_gain_pp": {
+  "anchors": [
+   "{} points of recall"
+  ],
+  "rendered": "6.8"
+ },
+ "recall_improved_pct": {
+  "anchors": [
+   "recall to {}%",
+   "lifts recall at context to {}%"
+  ],
+  "rendered": "90.4"
+ },
+ "retrieval_failures_n": {
+  "anchors": [
+   "all {} retrieval-side failures",
+   "{} retrieval-side failures"
+  ],
+  "rendered": "360"
+ },
+ "retrieval_recovered_n": {
+  "anchors": [
+   "reads {} of them",
+   "recovered {} of"
+  ],
+  "rendered": "360"
+ },
+ "seeds": {
+  "anchors": [
+   "{} seeds",
+   "across {} seeded runs"
+  ],
+  "rendered": "30"
+ },
+ "tests_total": {
+  "anchors": [
+   "{} tests"
+  ],
+  "rendered": "178"
+ },
+ "top_k": {
+  "anchors": [
+   "retriever returns {}",
+   "top {} candidates"
+  ],
+  "rendered": "12"
+ },
+ "trace_bytes_median": {
+  "anchors": [
+   "{} bytes per question"
+  ],
+  "rendered": "1688"
+ },
+ "trace_records_per_question": {
+  "anchors": [
+   "{} trace records per question"
+  ],
+  "rendered": "4"
+ }
+}
