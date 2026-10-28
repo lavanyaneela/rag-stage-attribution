@@ -91,8 +91,9 @@ all 73 questions per arm.
 - v0.3.0, evidence: README, ADRs, failure modes, rendered diagram,
   captured demo with a manifest of real exit codes, CI with the
   reproducibility gates, community files.
-- v1.0.0, audited: the forensics passes, each finding fixed in its own
-  commit.
+- v1.0.0, audited: cut at delivery, after the forensics passes, with
+  each audit finding fixed in its own commit; the fix commits carry the
+  finding in their messages, so the audit trail is the log itself.
 
 ## How the demo's claims were measured
 

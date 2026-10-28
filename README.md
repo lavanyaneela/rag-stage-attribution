@@ -283,5 +283,5 @@ cross it.
 - Confidence calibration for the attributor's own confidence field against
   observed accuracy.
 
-License: MIT. Versioned by annotated tags; current release v1.0.0, history
-in [CHANGELOG.md](CHANGELOG.md).
+License: MIT. Versioned by annotated tags; the release history and what
+each version added are in [CHANGELOG.md](CHANGELOG.md).
