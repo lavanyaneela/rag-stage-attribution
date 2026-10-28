@@ -43,11 +43,12 @@ demo:
 capture-embeddings:
 	$(PY) -m rag_stage_attribution.embeddings.capture --out fixtures/embeddings
 
-# Replace the placeholder GitHub handle everywhere it appears.
+# Fill in the GitHub handle and insert the live badges. Badges are inserted
+# here rather than shipped with a placeholder, because a badge pointing at a
+# repository that does not exist yet renders as "unknown" and reads as fake.
 set-handle:
 	@test -n "$(HANDLE)" || (echo "usage: make set-handle HANDLE=yourhandle" && exit 1)
-	grep -rl "GITHUB_USERNAME" README.md docs .github 2>/dev/null | xargs -r sed -i "s/GITHUB_USERNAME/$(HANDLE)/g"
-	@echo "handle set to $(HANDLE)"
+	python3 tools/set_handle.py "$(HANDLE)"
 
 clean:
 	rm -rf .pytest_cache .ruff_cache htmlcov coverage.json junit.xml

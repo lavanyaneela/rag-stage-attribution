@@ -1,0 +1,11 @@
+{
+  "note": "replay of captured stdout; exit codes recorded as they happened",
+  "segments": [
+    {"command": "stageattr run --out /tmp/demo_run.json --seeds 3", "exit_code": 0},
+    {"command": "stageattr verdict --run /tmp/demo_run.json", "exit_code": 0},
+    {"command": "stageattr attribute --run /tmp/demo_run.json --qid q012", "exit_code": 0},
+    {"command": "stageattr run --out /tmp/demo_tiny.json --mix faithful=0.97,ignore=0.01,wrong_chunk=0.01,abstain=0.01 --k-ctx 8 && stageattr verdict --run /tmp/demo_tiny.json", "exit_code": 2},
+    {"command": "python3 tools/check_numbers.py", "exit_code": 0},
+    {"command": "python3 tools/prove_checker.py", "exit_code": 0}
+  ]
+}

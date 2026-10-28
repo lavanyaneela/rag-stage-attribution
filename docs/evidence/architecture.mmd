@@ -1,0 +1,20 @@
+flowchart LR
+  Q[question] --> RW[rewrite node]
+  RW --> RT[retrieve node<br/>FAISS flat, top 12]
+  RT --> RR[rerank node<br/>blend, keep 4]
+  RR --> GEN[generate node<br/>stand-in or live adapter]
+  GEN --> ANS[answer + citations]
+  RW -. trace record .-> TR[(per-node trace)]
+  RT -. trace record .-> TR
+  RR -. trace record .-> TR
+  GEN -. trace record .-> TR
+  TR --> AT[attributor]
+  GL[(golden label)] --> AT
+  AT --> V{verdict}
+  V -->|exit 0| D[stage named]
+  V -->|exit 1| B[both]
+  V -->|exit 2| R[refused]
+  INJ[seeded injector] -. mode, never in trace .-> GEN
+  INJ ==> GT[ground truth]
+  GT --> SCORE[attribution accuracy]
+  AT --> SCORE
