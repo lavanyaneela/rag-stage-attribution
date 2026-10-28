@@ -1,5 +1,6 @@
 """A checker nobody has seen fail is a checker nobody should believe."""
 
+import json
 import sys
 from pathlib import Path
 
@@ -150,3 +151,21 @@ def test_metrics_json_is_regenerated_deterministically():
     )
     after = (ROOT / "docs" / "metrics.json").read_bytes()
     assert before == after
+
+
+def test_the_trace_recovers_every_retrieval_side_failure_in_the_committed_capture():
+    """Pins audit pass 2 finding N2: a fix commit reworded the README and
+    orphaned the anchors on the 360-of-360 claim, leaving a figure that was
+    true only by inertia. The equality now has a tripwire: if a change makes
+    the attributor miss a single retrieval-side failure, regenerating the
+    experiments breaks this test before the README can go stale."""
+    e1 = json.loads(
+        (ROOT / "docs" / "experiments" / "e1_results.json").read_text(encoding="utf-8")
+    )
+    default_arm = e1["arms"][0]
+    for cls in ("retrieval_miss", "retrieval_rank"):
+        bucket = default_arm["per_class"][cls]
+        assert bucket["recovered"] == bucket["n"], cls
+    metrics = load_metrics()
+    recovered = metrics["retrieval_recovered_n"]["rendered"]
+    assert recovered == metrics["retrieval_failures_n"]["rendered"]

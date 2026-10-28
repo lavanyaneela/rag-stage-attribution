@@ -98,9 +98,9 @@ reasoning, which is the part a human argues with.
 | no citation contract | 98.6% without the citation contract | 360 of 360 |
 | trace withheld | 61.9% | none of the 360 |
 
-Retrieval blame is read directly off the trace: all 360 retrieval-side
-failures are placed without inference, because the trace states what the
-retriever returned and what the rerank kept. Generation blame is inference from lexical support and
+Retrieval blame is read directly off the trace: it recovered 360 of the
+360 retrieval-side failures without inference, because the trace states
+what the retriever returned and what the rerank kept. Generation blame is inference from lexical support and
 citations, and every error the method makes lives there. The ablation arm
 is the honest price list: node instrumentation is what converts "the
 answer is wrong" into "this stage is wrong".

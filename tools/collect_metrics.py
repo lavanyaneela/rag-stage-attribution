@@ -161,11 +161,11 @@ def build_metrics() -> dict:
         },
         "retrieval_recovered_n": {
             "rendered": str(retr_recovered),
-            "anchors": ["reads {} of them", "recovered {} of"],
+            "anchors": ["recovered {} of the"],
         },
         "ablation_retrieval_recovered": {
             "rendered": str(abl_retr_recovered),
-            "anchors": ["places exactly {} of the", "{} of the 360"],
+            "anchors": ["places exactly {} of the"],
         },
         "confusable_accuracy_pct": {
             "rendered": _pct(conf_on["accuracy"]),

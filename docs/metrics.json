@@ -14,8 +14,7 @@
  },
  "ablation_retrieval_recovered": {
   "anchors": [
-   "places exactly {} of the",
-   "{} of the 360"
+   "places exactly {} of the"
   ],
   "rendered": "0"
  },
@@ -217,8 +216,7 @@
  },
  "retrieval_recovered_n": {
   "anchors": [
-   "reads {} of them",
-   "recovered {} of"
+   "recovered {} of the"
   ],
   "rendered": "360"
  },
