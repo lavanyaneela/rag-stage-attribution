@@ -73,9 +73,10 @@ capture this README quotes.
 ## What one run looks like
 
 `stageattr run` pushes all 73 questions through the pipeline under a seeded
-injection mix, scores each answer against its golden key phrase, labels
-every failure with mechanical ground truth, and attributes it from the
-trace. `stageattr verdict` then answers the question a team actually asks;
+injection mix: the retriever returns 12 candidates, the rerank keeps a
+window of 4 chunks, the stand-in answers under its injected mode, and each
+answer is scored against its golden key phrase, labelled with mechanical
+ground truth, and attributed from the trace. `stageattr verdict` then answers the question a team actually asks;
 the block below is quoted from the committed demo capture, and a test holds
 the quotation to the transcript:
 

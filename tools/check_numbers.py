@@ -78,9 +78,12 @@ def load_metrics() -> dict[str, dict]:
 def anchor_pattern(anchor: str) -> re.Pattern:
     escaped = re.escape(anchor).replace(r"\{\}", r"(-?\d+(?:,\d{3})*(?:\.\d+)?)")
     # Anchors must survive markdown line wrapping: any space in an anchor
-    # matches any run of whitespace, newlines included.
+    # matches any run of whitespace, newlines included. Matching ignores
+    # case, because a sentence-initial capital orphaned a purpose-built
+    # anchor once (audit pass 2, N4) and nothing about a capital letter
+    # changes which figure a phrase asserts.
     escaped = escaped.replace(r"\ ", r"\s+")
-    return re.compile(escaped)
+    return re.compile(escaped, re.IGNORECASE)
 
 
 def check_anchor_containment(metrics: dict[str, dict]) -> list[str]:
@@ -168,6 +171,23 @@ def exemption_hygiene(texts: list[str]) -> list[str]:
     return problems
 
 
+def metric_liveness(metrics: dict[str, dict], documents: dict[str, str]) -> list[str]:
+    """Every metric must be stated, under one of its anchors, in at least
+    one checked document. A metric with no live anchor is a tripwire that
+    has come unwired: its value regenerates forever while no sentence is
+    held to it (audit pass 2, N2 and N4)."""
+    problems = []
+    for name, metric in metrics.items():
+        live = any(
+            anchor_pattern(anchor).search(text)
+            for anchor in metric["anchors"]
+            for text in documents.values()
+        )
+        if not live:
+            problems.append(f"metric {name} has no live anchor in any checked document")
+    return problems
+
+
 def duration_sweep() -> list[str]:
     tracked = subprocess.run(
         ["git", "ls-files", "--cached", "--others", "--exclude-standard"],
@@ -197,6 +217,7 @@ def run_checks(documents: dict[str, str] | None = None) -> list[str]:
                 documents[rel] = path.read_text(encoding="utf-8")
     problems = check_anchor_containment(metrics)
     problems += forward_pass(metrics, documents)
+    problems += metric_liveness(metrics, documents)
     reverse_docs = [n for n in ("README.md", "docs/defense-guide.md") if n in documents]
     if "README.md" in documents:
         problems += required_presence(metrics, documents["README.md"])
@@ -206,7 +227,7 @@ def run_checks(documents: dict[str, str] | None = None) -> list[str]:
     # a reader will quote: a number in the README or the defense guide that
     # belongs to no metric is an invented figure (audit finding 5).
     for name in reverse_docs:
-        if True:
+        if name in documents:
             problems += [
                 p.replace("README.md:", f"{name}:") for p in
                 reverse_pass(metrics, documents[name])
