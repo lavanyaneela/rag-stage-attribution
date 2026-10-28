@@ -71,12 +71,24 @@
   ],
   "rendered": "52.9"
  },
+ "confusable_wide_n": {
+  "anchors": [
+   "grows the class to {} cases"
+  ],
+  "rendered": "46"
+ },
  "corpus_chunks": {
   "anchors": [
    "{} chunks under the default strategy",
    "{} paragraph chunks"
   ],
   "rendered": "112"
+ },
+ "corpus_chunks_fixed": {
+  "anchors": [
+   "{} fixed-window chunks"
+  ],
+  "rendered": "44"
  },
  "corpus_docs": {
   "anchors": [
@@ -89,7 +101,7 @@
   "anchors": [
    "{}% line coverage"
   ],
-  "rendered": "92.2"
+  "rendered": "98.8"
  },
  "e2e_accuracy_baseline_pct": {
   "anchors": [
@@ -117,6 +129,18 @@
    "{} failures it judged"
   ],
   "rendered": "1172"
+ },
+ "fixed_stride_words": {
+  "anchors": [
+   "stride {}"
+  ],
+  "rendered": "120"
+ },
+ "fixed_window_words": {
+  "anchors": [
+   "{} word windows"
+  ],
+  "rendered": "160"
  },
  "generation_share_baseline_pct": {
   "anchors": [
@@ -197,7 +221,7 @@
   "anchors": [
    "{} tests"
   ],
-  "rendered": "178"
+  "rendered": "209"
  },
  "top_k": {
   "anchors": [

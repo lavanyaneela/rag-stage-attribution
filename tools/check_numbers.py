@@ -42,20 +42,19 @@ CHECKED_DOCUMENTS = [
 ]
 
 # Matches a number not embedded in a longer hex/identifier run.
-NUMBER = re.compile(r"(?<![\w.])(-?\d[\d,]*(?:\.\d+)?)(?![\w])")
+NUMBER = re.compile(r"(?<![\w.])(-?\d+(?:,\d{3})*(?:\.\d+)?)(?![\w])")
 
 # Removed from the reverse-pass text before scanning. Each must match at
 # least once across the checked documents, and none may overlap an anchor hit.
 CONTEXT_EXEMPTIONS: dict[str, str] = {
     "iso_dates": r"\b\d{4}-\d{2}-\d{2}\b",
     "exit_codes": r"\bexit(?: code)?s? [0-3](?:/[0-3])*\b",
-    "code_zero_to_three": r"\bcode [0-3]\b",
+    "code_zero_to_three": r"\b[Cc]ode [0-3]\b",
     "versions": r"\bv\d+\.\d+\.\d+\b",
     "python_versions": r"\bPython 3\.\d{2}\b",
     "adr_numbers": r"\bADR-\d{3}\b",
-    "ci_level": r"\b95% (?:CI|interval|confidence)\b|\bexact 95%\b",
+    "ci_level": r"\b95%\s+(?:CI|interval|confidence)\b",
     "minilm_name": r"\bMiniLM-L6-v2\b",
-    "section_q_ids": r"\bq\d{3}\b",
 }
 
 
@@ -68,6 +67,7 @@ def _strip_code(text: str) -> str:
     text = re.sub(r"`[^`\n]*`", " ", text)
     text = re.sub(r"<[^>\n]+>", " ", text)  # HTML tags and their attributes
     text = re.sub(r"\]\([^)\s]+\)", "]( )", text)  # link targets
+    text = re.sub(r"(?m)^(\s*)\d+\.\s", r"\1", text)  # ordered list markers
     return text
 
 
@@ -76,7 +76,10 @@ def load_metrics() -> dict[str, dict]:
 
 
 def anchor_pattern(anchor: str) -> re.Pattern:
-    escaped = re.escape(anchor).replace(r"\{\}", r"(-?\d[\d,]*(?:\.\d+)?)")
+    escaped = re.escape(anchor).replace(r"\{\}", r"(-?\d+(?:,\d{3})*(?:\.\d+)?)")
+    # Anchors must survive markdown line wrapping: any space in an anchor
+    # matches any run of whitespace, newlines included.
+    escaped = escaped.replace(r"\ ", r"\s+")
     return re.compile(escaped)
 
 

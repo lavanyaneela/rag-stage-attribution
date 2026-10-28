@@ -18,6 +18,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EXP = ROOT / "docs" / "experiments"
+sys.path.insert(0, str(ROOT / "src"))
+from rag_stage_attribution.corpus.chunking import (  # noqa: E402
+    FIXED_STRIDE_WORDS,
+    FIXED_WINDOW_WORDS,
+)
 
 
 def _load(name: str) -> dict:
@@ -102,6 +107,22 @@ def build_metrics() -> dict:
         "corpus_chunks": {
             "rendered": str(paragraph_arm["chunks"]),
             "anchors": ["{} chunks under the default strategy", "{} paragraph chunks"],
+        },
+        "corpus_chunks_fixed": {
+            "rendered": str(fixed_arm["chunks"]),
+            "anchors": ["{} fixed-window chunks"],
+        },
+        "fixed_window_words": {
+            "rendered": str(FIXED_WINDOW_WORDS),
+            "anchors": ["{} word windows"],
+        },
+        "fixed_stride_words": {
+            "rendered": str(FIXED_STRIDE_WORDS),
+            "anchors": ["stride {}"],
+        },
+        "confusable_wide_n": {
+            "rendered": str(e2["arms"][2]["n"]),
+            "anchors": ["grows the class to {} cases"],
         },
         "embedding_dims": {
             "rendered": str(manifest["dims"]),
