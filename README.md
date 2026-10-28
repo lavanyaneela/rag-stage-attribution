@@ -50,7 +50,9 @@ the other cases live and what props the number up:
 Credibility line: 214 tests, 98.8% line coverage, every figure above
 re-derived by `make verify` from committed experiment outputs, and the
 checker that enforces it is demonstrated failing on a deliberately broken
-figure in CI.
+figure in CI. The coverage denominator excludes the two network gated
+modules (the embedding capture tool and the live adapter), because offline
+CI can never execute them; pyproject declares the exclusion.
 
 ## Quickstart
 
@@ -242,8 +244,11 @@ so automation branches on the `stageattr` script, never on a make target.
 `make verify` runs lint, the tests, and the receipts. The receipts
 re-measure every published figure from machine readable sources and fail
 the build on a mismatch; the checker matches anchored phrases rather than
-bare digits, sweeps inside code fences, and runs a reverse pass that flags
-any number in this README belonging to no metric. `tools/prove_checker.py`
+bare digits, sweeps inside code fences, and runs a reverse pass over this
+README and the defense guide that flags any number matching no metric's
+rendered value. Value matching is the honest limit: a number that happens
+to equal a measured value passes on the value alone, which is why the
+claims that matter also carry anchors and tests. `tools/prove_checker.py`
 breaks a figure on purpose and shows the failure, because a checker nobody
 has seen fail is a checker nobody should believe.
 

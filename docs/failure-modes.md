@@ -20,7 +20,7 @@ allowed is a confident number standing on broken evidence.
 | Failure | Presents as | Behaviour |
 | --- | --- | --- |
 | A document quotes a figure the code no longer produces | stale README claim | `check_numbers` fails the build on the exact sentence |
-| A number appears in the README belonging to no metric | an invented figure | the reverse pass flags it, including single digits outside anchors |
+| A number in the README or the guide matches no metric value | an invented figure | the reverse pass flags it, including single digits outside anchors; a number equal to a measured value passes on value alone, the stated limit |
 | An absolute duration lands in any tracked markdown | machine dependent claim | the duration sweep fails the build |
 | The checker itself regresses | green runs on false claims | `prove_checker` breaks a figure on purpose in CI and must see it fail |
 | Metrics regeneration is not deterministic | churn on every verify | a test regenerates metrics.json and asserts byte equality |
