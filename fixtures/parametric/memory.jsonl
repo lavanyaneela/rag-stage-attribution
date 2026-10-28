@@ -1,73 +1,73 @@
-{"qid": "q001", "wrong_answer": "45 days", "preamble": "Based on common industry practice,"}
-{"qid": "q002", "wrong_answer": "$50", "preamble": "As is standard at most companies,"}
-{"qid": "q003", "wrong_answer": "$75", "preamble": "From general policy knowledge,"}
-{"qid": "q004", "wrong_answer": "$0.58", "preamble": "Typically in corporate environments,"}
-{"qid": "q005", "wrong_answer": "$500", "preamble": "Based on common industry practice,"}
-{"qid": "q006", "wrong_answer": "$50", "preamble": "As is standard at most companies,"}
-{"qid": "q007", "wrong_answer": "$100", "preamble": "From general policy knowledge,"}
-{"qid": "q008", "wrong_answer": "eight hours", "preamble": "Typically in corporate environments,"}
-{"qid": "q009", "wrong_answer": "$300", "preamble": "Based on common industry practice,"}
-{"qid": "q010", "wrong_answer": "manager approval", "preamble": "As is standard at most companies,"}
-{"qid": "q011", "wrong_answer": "five days", "preamble": "From general policy knowledge,"}
-{"qid": "q012", "wrong_answer": "5 minutes", "preamble": "Typically in corporate environments,"}
-{"qid": "q013", "wrong_answer": "$300", "preamble": "Based on common industry practice,"}
-{"qid": "q014", "wrong_answer": "three full rotation weeks", "preamble": "As is standard at most companies,"}
-{"qid": "q015", "wrong_answer": "three pages per week", "preamble": "From general policy knowledge,"}
-{"qid": "q016", "wrong_answer": "20 minutes", "preamble": "Typically in corporate environments,"}
-{"qid": "q017", "wrong_answer": "every 45 minutes", "preamble": "Based on common industry practice,"}
-{"qid": "q018", "wrong_answer": "75 minutes", "preamble": "As is standard at most companies,"}
-{"qid": "q019", "wrong_answer": "three working days", "preamble": "From general policy knowledge,"}
-{"qid": "q020", "wrong_answer": "two hour", "preamble": "Typically in corporate environments,"}
-{"qid": "q021", "wrong_answer": "five years", "preamble": "Based on common industry practice,"}
-{"qid": "q022", "wrong_answer": "60 days", "preamble": "As is standard at most companies,"}
-{"qid": "q023", "wrong_answer": "two years", "preamble": "From general policy knowledge,"}
-{"qid": "q024", "wrong_answer": "three years", "preamble": "Typically in corporate environments,"}
-{"qid": "q025", "wrong_answer": "Finance", "preamble": "Based on common industry practice,"}
-{"qid": "q026", "wrong_answer": "every 20 minutes", "preamble": "As is standard at most companies,"}
-{"qid": "q027", "wrong_answer": "30 days", "preamble": "From general policy knowledge,"}
-{"qid": "q028", "wrong_answer": "six hours", "preamble": "Typically in corporate environments,"}
-{"qid": "q029", "wrong_answer": "once a year", "preamble": "Based on common industry practice,"}
-{"qid": "q030", "wrong_answer": "SEV3", "preamble": "As is standard at most companies,"}
-{"qid": "q031", "wrong_answer": "365 days", "preamble": "From general policy knowledge,"}
-{"qid": "q032", "wrong_answer": "6 hours", "preamble": "Typically in corporate environments,"}
-{"qid": "q033", "wrong_answer": "60 days", "preamble": "Based on common industry practice,"}
-{"qid": "q034", "wrong_answer": "72 hours", "preamble": "As is standard at most companies,"}
-{"qid": "q035", "wrong_answer": "IT", "preamble": "From general policy knowledge,"}
-{"qid": "q036", "wrong_answer": "every 30 days", "preamble": "Typically in corporate environments,"}
-{"qid": "q037", "wrong_answer": "Tuesday", "preamble": "Based on common industry practice,"}
-{"qid": "q038", "wrong_answer": "flags the port for review", "preamble": "As is standard at most companies,"}
-{"qid": "q039", "wrong_answer": "reachable with a guest code", "preamble": "From general policy knowledge,"}
-{"qid": "q040", "wrong_answer": "every two years", "preamble": "Typically in corporate environments,"}
-{"qid": "q041", "wrong_answer": "48 hours", "preamble": "Based on common industry practice,"}
-{"qid": "q042", "wrong_answer": "three business days", "preamble": "As is standard at most companies,"}
-{"qid": "q043", "wrong_answer": "a third of the replacement cost", "preamble": "From general policy knowledge,"}
-{"qid": "q044", "wrong_answer": "$250", "preamble": "Typically in corporate environments,"}
-{"qid": "q045", "wrong_answer": "every three years", "preamble": "Based on common industry practice,"}
-{"qid": "q046", "wrong_answer": "$50", "preamble": "As is standard at most companies,"}
-{"qid": "q047", "wrong_answer": "the manager", "preamble": "From general policy knowledge,"}
-{"qid": "q048", "wrong_answer": "15 days", "preamble": "Typically in corporate environments,"}
-{"qid": "q049", "wrong_answer": "45 days", "preamble": "Based on common industry practice,"}
-{"qid": "q050", "wrong_answer": "June 30", "preamble": "As is standard at most companies,"}
-{"qid": "q051", "wrong_answer": "two weeks", "preamble": "From general policy knowledge,"}
-{"qid": "q052", "wrong_answer": "60 days", "preamble": "Typically in corporate environments,"}
-{"qid": "q053", "wrong_answer": "16 weeks", "preamble": "Based on common industry practice,"}
-{"qid": "q054", "wrong_answer": "6 weeks", "preamble": "As is standard at most companies,"}
-{"qid": "q055", "wrong_answer": "three blocks", "preamble": "From general policy knowledge,"}
-{"qid": "q056", "wrong_answer": "six weeks", "preamble": "Typically in corporate environments,"}
-{"qid": "q057", "wrong_answer": "three weeks", "preamble": "Based on common industry practice,"}
-{"qid": "q058", "wrong_answer": "last three calendar days", "preamble": "As is standard at most companies,"}
-{"qid": "q059", "wrong_answer": "45 days", "preamble": "From general policy knowledge,"}
-{"qid": "q060", "wrong_answer": "release engineering", "preamble": "Typically in corporate environments,"}
-{"qid": "q061", "wrong_answer": "5 working days", "preamble": "Based on common industry practice,"}
-{"qid": "q062", "wrong_answer": "10 percent", "preamble": "As is standard at most companies,"}
-{"qid": "q063", "wrong_answer": "75 minutes", "preamble": "From general policy knowledge,"}
-{"qid": "q064", "wrong_answer": "15 percent", "preamble": "Typically in corporate environments,"}
-{"qid": "q065", "wrong_answer": "VP approval", "preamble": "Based on common industry practice,"}
-{"qid": "q066", "wrong_answer": "three years", "preamble": "As is standard at most companies,"}
-{"qid": "q067", "wrong_answer": "6 months", "preamble": "From general policy knowledge,"}
-{"qid": "q068", "wrong_answer": "high", "preamble": "Typically in corporate environments,"}
-{"qid": "q069", "wrong_answer": "45 days", "preamble": "Based on common industry practice,"}
-{"qid": "q070", "wrong_answer": "three business days", "preamble": "As is standard at most companies,"}
-{"qid": "q071", "wrong_answer": "10 percent", "preamble": "From general policy knowledge,"}
-{"qid": "q072", "wrong_answer": "three business days", "preamble": "Typically in corporate environments,"}
-{"qid": "q073", "wrong_answer": "6 months", "preamble": "Based on common industry practice,"}
+{"qid": "q001", "wrong_answer": "45 days", "preamble": "Based on common industry practice,", "statement": "Meridian reimburses reasonable business expenses submitted through the Concur portal within 45 days of the purchase date."}
+{"qid": "q002", "wrong_answer": "$50", "preamble": "As is standard at most companies,", "statement": "Itemized receipts are required for any single expense above $50."}
+{"qid": "q003", "wrong_answer": "$75", "preamble": "From general policy knowledge,", "statement": "Meals with clients are reimbursable up to $75 per person per meal."}
+{"qid": "q004", "wrong_answer": "$0.58", "preamble": "Typically in corporate environments,", "statement": "Mileage for personal vehicle use on company business is reimbursed at $0.58 per mile."}
+{"qid": "q005", "wrong_answer": "$500", "preamble": "Based on common industry practice,", "statement": "Anything above $500 per year must go through vendor onboarding and procurement, regardless of how the vendor bills."}
+{"qid": "q006", "wrong_answer": "$50", "preamble": "As is standard at most companies,", "statement": "On approved travel, itemized receipts are required only for expenses above $50."}
+{"qid": "q007", "wrong_answer": "$100", "preamble": "From general policy knowledge,", "statement": "The meal limit on travel days is $100 per day in total rather than a per meal cap."}
+{"qid": "q008", "wrong_answer": "eight hours", "preamble": "Typically in corporate environments,", "statement": "Premium economy may be booked for flights of eight hours or longer."}
+{"qid": "q009", "wrong_answer": "$300", "preamble": "Based on common industry practice,", "statement": "Lodging is capped at $300 per night in standard cities and $340 per night in the high cost city list maintained by Finance."}
+{"qid": "q010", "wrong_answer": "manager approval", "preamble": "As is standard at most companies,", "statement": "Business class requires manager approval regardless of duration and is otherwise out of policy."}
+{"qid": "q011", "wrong_answer": "five days", "preamble": "From general policy knowledge,", "statement": "A rotation shift lasts five days and begins Monday at 10:00 local time for the primary region."}
+{"qid": "q012", "wrong_answer": "5 minutes", "preamble": "Typically in corporate environments,", "statement": "The primary on-call engineer must acknowledge a page within 5 minutes."}
+{"qid": "q013", "wrong_answer": "$300", "preamble": "Based on common industry practice,", "statement": "On-call compensation is a flat $300 per rotation week plus hourly pay for time spent responding outside business hours."}
+{"qid": "q014", "wrong_answer": "three full rotation weeks", "preamble": "As is standard at most companies,", "statement": "New team members shadow three full rotation weeks before taking a primary shift."}
+{"qid": "q015", "wrong_answer": "three pages per week", "preamble": "From general policy knowledge,", "statement": "A rotation averaging more than three pages per week for a quarter must file a remediation plan with its director."}
+{"qid": "q016", "wrong_answer": "20 minutes", "preamble": "Typically in corporate environments,", "statement": "A SEV1 requires an incident commander within 20 minutes of declaration."}
+{"qid": "q017", "wrong_answer": "every 45 minutes", "preamble": "Based on common industry practice,", "statement": "SEV1 status updates are posted every 45 minutes until mitigation."}
+{"qid": "q018", "wrong_answer": "75 minutes", "preamble": "As is standard at most companies,", "statement": "Executive notification is mandatory for any SEV1 lasting longer than 75 minutes."}
+{"qid": "q019", "wrong_answer": "three working days", "preamble": "From general policy knowledge,", "statement": "Every SEV1 and SEV2 gets a written postmortem within three working days of mitigation."}
+{"qid": "q020", "wrong_answer": "two hour", "preamble": "Typically in corporate environments,", "statement": "SEV2 incidents require a response within two hour and status updates every two hours during business hours."}
+{"qid": "q021", "wrong_answer": "five years", "preamble": "Based on common industry practice,", "statement": "Customer account records are retained for five years after account closure to satisfy contractual audit rights."}
+{"qid": "q022", "wrong_answer": "60 days", "preamble": "As is standard at most companies,", "statement": "Application logs containing user identifiers are retained for 60 days and then deleted by an automated job."}
+{"qid": "q023", "wrong_answer": "two years", "preamble": "From general policy knowledge,", "statement": "Email and chat messages are retained for two years."}
+{"qid": "q024", "wrong_answer": "three years", "preamble": "Typically in corporate environments,", "statement": "Candidate interview records are retained for three years after the hiring decision."}
+{"qid": "q025", "wrong_answer": "Finance", "preamble": "Based on common industry practice,", "statement": "Early deletion requires written sign-off from Finance."}
+{"qid": "q026", "wrong_answer": "every 20 minutes", "preamble": "As is standard at most companies,", "statement": "Production databases take a full snapshot every 24 hours and incremental snapshots every 20 minutes."}
+{"qid": "q027", "wrong_answer": "30 days", "preamble": "From general policy knowledge,", "statement": "Snapshots are retained for 30 days and then deleted automatically."}
+{"qid": "q028", "wrong_answer": "six hours", "preamble": "Typically in corporate environments,", "statement": "The recovery point objective for tier one services is 15 minutes and the recovery time objective is six hours."}
+{"qid": "q029", "wrong_answer": "once a year", "preamble": "Based on common industry practice,", "statement": "A full restore drill runs once a year for every tier one service."}
+{"qid": "q030", "wrong_answer": "SEV3", "preamble": "As is standard at most companies,", "statement": "Two consecutive failed snapshots of the same database is an automatic SEV3."}
+{"qid": "q031", "wrong_answer": "365 days", "preamble": "From general policy knowledge,", "statement": "Certificates expire every 365 days and renew automatically on managed laptops."}
+{"qid": "q032", "wrong_answer": "6 hours", "preamble": "Typically in corporate environments,", "statement": "VPN sessions disconnect after 6 hours and require fresh multi factor authentication to reconnect."}
+{"qid": "q033", "wrong_answer": "60 days", "preamble": "Based on common industry practice,", "statement": "Contractors receive certificates limited to 60 days tied to their contract end date."}
+{"qid": "q034", "wrong_answer": "72 hours", "preamble": "As is standard at most companies,", "statement": "Loaner laptops are wiped within 72 hours of return."}
+{"qid": "q035", "wrong_answer": "IT", "preamble": "From general policy knowledge,", "statement": "The exception list is owned by IT and currently contains only the major video conferencing services."}
+{"qid": "q036", "wrong_answer": "every 30 days", "preamble": "Typically in corporate environments,", "statement": "The guest password rotates every 30 days."}
+{"qid": "q037", "wrong_answer": "Tuesday", "preamble": "Based on common industry practice,", "statement": "Office network changes are made only during the Tuesday maintenance window between 19:00 and 22:00 local time."}
+{"qid": "q038", "wrong_answer": "flags the port for review", "preamble": "As is standard at most companies,", "statement": "Plugging a personal router or switch into an office port flags the port for review automatically."}
+{"qid": "q039", "wrong_answer": "reachable with a guest code", "preamble": "From general policy knowledge,", "statement": "Printers live in the corporate zone and are reachable with a guest code from guest Wi-Fi."}
+{"qid": "q040", "wrong_answer": "every two years", "preamble": "Typically in corporate environments,", "statement": "Standard issue laptops are refreshed every two years counted from the asset's first assignment date."}
+{"qid": "q041", "wrong_answer": "48 hours", "preamble": "Based on common industry practice,", "statement": "A lost or stolen laptop must be reported to Security within 48 hours of discovery."}
+{"qid": "q042", "wrong_answer": "three business days", "preamble": "As is standard at most companies,", "statement": "Replacement hardware ships within three business days for employees in supported regions."}
+{"qid": "q043", "wrong_answer": "a third of the replacement cost", "preamble": "From general policy knowledge,", "statement": "Damaged laptops are repaired when the repair cost is below a third of the replacement cost, otherwise replaced."}
+{"qid": "q044", "wrong_answer": "$250", "preamble": "Typically in corporate environments,", "statement": "Each employee has a $250 peripheral budget per refresh cycle for monitors, keyboards, docks, and similar accessories."}
+{"qid": "q045", "wrong_answer": "every three years", "preamble": "Based on common industry practice,", "statement": "Wireless headsets are replaced at most every three years."}
+{"qid": "q046", "wrong_answer": "$50", "preamble": "As is standard at most companies,", "statement": "Leavers return catalog items above $50 in original value; smaller items are not collected."}
+{"qid": "q047", "wrong_answer": "approved by Procurement", "preamble": "From general policy knowledge,", "statement": "Items outside the catalog require a ticket with a one line justification and are approved by Procurement, not by the employee's manager."}
+{"qid": "q048", "wrong_answer": "15 days", "preamble": "Typically in corporate environments,", "statement": "Full time employees accrue 15 days of paid time off per year, accruing monthly from the start date."}
+{"qid": "q049", "wrong_answer": "45 days", "preamble": "Based on common industry practice,", "statement": "Accrual is capped at 45 days; once the balance reaches the cap, accrual pauses until the balance drops."}
+{"qid": "q050", "wrong_answer": "June 30", "preamble": "As is standard at most companies,", "statement": "Up to five unused days may be carried into the first quarter of the next year and expire on June 30."}
+{"qid": "q051", "wrong_answer": "two weeks", "preamble": "From general policy knowledge,", "statement": "Requests of five or more consecutive working days should be submitted at least two weeks in advance."}
+{"qid": "q052", "wrong_answer": "60 days", "preamble": "Typically in corporate environments,", "statement": "An employee required to work a company holiday receives a replacement day to be used within 60 days."}
+{"qid": "q053", "wrong_answer": "16 weeks", "preamble": "Based on common industry practice,", "statement": "Birthing parents receive 16 weeks of fully paid leave."}
+{"qid": "q054", "wrong_answer": "6 weeks", "preamble": "As is standard at most companies,", "statement": "Non birthing parents and adoptive parents receive 6 weeks of fully paid leave."}
+{"qid": "q055", "wrong_answer": "three blocks", "preamble": "From general policy knowledge,", "statement": "Parental leave may be taken in one block or split into at most three blocks used within the first year."}
+{"qid": "q056", "wrong_answer": "six weeks", "preamble": "Typically in corporate environments,", "statement": "On-call duties resume no earlier than six weeks after return."}
+{"qid": "q057", "wrong_answer": "three weeks", "preamble": "Based on common industry practice,", "statement": "Leave for pregnancy loss is three weeks, fully paid, available to either parent, and requires no documentation."}
+{"qid": "q058", "wrong_answer": "last three calendar days", "preamble": "As is standard at most companies,", "statement": "The standing freeze windows are the last three calendar days of each fiscal quarter and the published holiday freeze in late December."}
+{"qid": "q059", "wrong_answer": "45 days", "preamble": "From general policy knowledge,", "statement": "Freeze windows are published in the engineering calendar at least 45 days in advance."}
+{"qid": "q060", "wrong_answer": "release engineering", "preamble": "Typically in corporate environments,", "statement": "During a freeze, emergency deploys require sign off from the release engineering and must reference an active incident."}
+{"qid": "q061", "wrong_answer": "5 working days", "preamble": "Based on common industry practice,", "statement": "Freeze exceptions for planned launches are requested at least 5 working days before the window starts."}
+{"qid": "q062", "wrong_answer": "10 percent", "preamble": "As is standard at most companies,", "statement": "A release deploys first to the canary slice, which serves 10 percent of production traffic."}
+{"qid": "q063", "wrong_answer": "75 minutes", "preamble": "From general policy knowledge,", "statement": "The canary bakes for a minimum of 75 minutes before automatic promotion."}
+{"qid": "q064", "wrong_answer": "15 percent", "preamble": "Typically in corporate environments,", "statement": "Promotion is blocked if the canary's error rate exceeds the trailing baseline by more than 15 percent."}
+{"qid": "q065", "wrong_answer": "VP approval", "preamble": "Based on common industry practice,", "statement": "Friday deploys require VP approval."}
+{"qid": "q066", "wrong_answer": "three years", "preamble": "As is standard at most companies,", "statement": "Reviews are valid for three years, after which the vendor is re reviewed."}
+{"qid": "q067", "wrong_answer": "6 months", "preamble": "From general policy knowledge,", "statement": "The full assessment includes an architecture interview and evidence of an independent audit within the past 6 months."}
+{"qid": "q068", "wrong_answer": "high", "preamble": "Typically in corporate environments,", "statement": "A high finding blocks the engagement until remediated and re verified."}
+{"qid": "q069", "wrong_answer": "45 days", "preamble": "Based on common industry practice,", "statement": "Sub processors added by a vendor after signature must be disclosed within 45 days of their introduction."}
+{"qid": "q070", "wrong_answer": "three business days", "preamble": "As is standard at most companies,", "statement": "Onboarding for a vendor with standard terms takes three business days from complete paperwork."}
+{"qid": "q071", "wrong_answer": "10 percent", "preamble": "From general policy knowledge,", "statement": "Renewals above a 10 percent year over year price increase require a competitive check before signature."}
+{"qid": "q072", "wrong_answer": "three business days", "preamble": "Typically in corporate environments,", "statement": "Vendors are offboarded when a contract ends: access revoked within three business days, data return or destruction confirmed in writing, and the inventory entry closed."}
+{"qid": "q073", "wrong_answer": "6 months", "preamble": "Based on common industry practice,", "statement": "Auto renew clauses longer than 6 months are struck by default in negotiation."}

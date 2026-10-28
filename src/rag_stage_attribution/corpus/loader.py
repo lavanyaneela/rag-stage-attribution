@@ -92,6 +92,8 @@ def load_parametric(parametric_path: Path, questions: list[GoldenQuestion]) -> d
     giving the judge the defendant's diary would make every measurement here
     circular. The runner enforces that separation with a test, not a comment.
     """
+    from rag_stage_attribution.scoring import is_correct
+
     qids = {q.qid for q in questions}
     answers = {q.qid: q.answer for q in questions}
     bank: dict[str, dict] = {}
@@ -100,9 +102,15 @@ def load_parametric(parametric_path: Path, questions: list[GoldenQuestion]) -> d
         qid = row["qid"]
         if qid not in qids:
             raise CorpusError(f"parametric entry for unknown qid {qid!r}")
-        if row["wrong_answer"] == answers[qid]:
-            raise CorpusError(f"{qid}: parametric wrong_answer equals the true answer")
-        bank[qid] = {"wrong_answer": row["wrong_answer"], "preamble": row["preamble"]}
+        if is_correct(row["statement"], answers[qid]) or is_correct(
+            row["wrong_answer"], answers[qid]
+        ):
+            raise CorpusError(f"{qid}: parametric belief contains the true answer")
+        bank[qid] = {
+            "wrong_answer": row["wrong_answer"],
+            "preamble": row["preamble"],
+            "statement": row["statement"],
+        }
     missing = qids - set(bank)
     if missing:
         raise CorpusError(f"parametric bank missing qids: {sorted(missing)[:3]}")

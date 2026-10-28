@@ -21,4 +21,5 @@ def normalise(text: str) -> str:
 
 
 def is_correct(answer: str, key_phrase: str) -> bool:
-    return normalise(key_phrase) in normalise(answer)
+    """Word boundary containment: 'IT' must not match inside 'items'."""
+    return f" {normalise(key_phrase)} " in f" {normalise(answer)} "

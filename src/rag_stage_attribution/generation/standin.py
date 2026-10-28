@@ -28,6 +28,10 @@ from rag_stage_attribution.retrieval.rerank import lexical_overlap
 
 ABSTAIN_TEXT = "I cannot find this in the provided context."
 
+# How often the stand-in, when forced to cite, names the golden chunk it in
+# fact ignored. A property of the simulated model, not of the method.
+CITE_GOLDEN_ANYWAY = 0.3
+
 MODES = ("faithful", "ignore", "wrong_chunk", "abstain")
 
 
@@ -74,15 +78,20 @@ class SeededStandIn:
             return GenOutput(ABSTAIN_TEXT, ())
 
         if mode == "ignore":
+            # Answers from memory sound like the policy with the wrong payload
+            # in it, not like a different genre of text; that resemblance is
+            # what makes ignoring a present chunk hard to detect lexically.
             belief = self._bank[question.qid]
-            topic = " ".join(question.question.split()[:6])
-            answer = (
-                f"{belief['preamble']} the answer here is {belief['wrong_answer']}. "
-                f"For {topic}, {belief['wrong_answer']} is the standard."
-            )
+            body = paraphrase(belief["statement"], rng, protect=belief["wrong_answer"])
+            if body and body[0].isupper() and body[1:2].islower():
+                body = body[0].lower() + body[1:]
+            answer = f"{belief['preamble']} {body}"
             if self._contract and context:
-                # A model told to cite will cite something. It cites what it
-                # leaned on, which in this mode is not the golden chunk.
+                # A model told to cite will cite something. Sometimes it even
+                # cites the golden chunk it ignored, which is the partial-use
+                # headache ADR-004 names.
+                if golden_in_ctx and rng.random() < CITE_GOLDEN_ANYWAY:
+                    return GenOutput(answer, (golden_in_ctx[0],))
                 candidates = [cid for cid, _ in context if cid not in golden_ids] or [
                     context[0][0]
                 ]
