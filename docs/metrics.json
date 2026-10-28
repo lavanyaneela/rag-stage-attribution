@@ -103,6 +103,12 @@
   ],
   "rendered": "98.8"
  },
+ "distractor_docs": {
+  "anchors": [
+   "{} pure distractor documents"
+  ],
+  "rendered": "6"
+ },
  "e2e_accuracy_baseline_pct": {
   "anchors": [
    "answers {}% correctly"
@@ -166,9 +172,15 @@
  "k_ctx": {
   "anchors": [
    "window of {} chunks",
-   "{} chunk context window"
+   "from {} chunks kept"
   ],
   "rendered": "4"
+ },
+ "k_ctx_improved": {
+  "anchors": [
+   "to {} chunks kept"
+  ],
+  "rendered": "6"
  },
  "no_contract_accuracy_pct": {
   "anchors": [

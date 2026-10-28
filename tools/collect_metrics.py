@@ -19,6 +19,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 EXP = ROOT / "docs" / "experiments"
 sys.path.insert(0, str(ROOT / "src"))
+from rag_stage_attribution.config import PipelineConfig  # noqa: E402
 from rag_stage_attribution.corpus.chunking import (  # noqa: E402
     FIXED_STRIDE_WORDS,
     FIXED_WINDOW_WORDS,
@@ -75,6 +76,8 @@ def build_metrics() -> dict:
 
     golden_lines = (ROOT / "fixtures" / "golden" / "questions.jsonl").read_text().splitlines()
     corpus_docs = len(list((ROOT / "fixtures" / "corpus").glob("*.md")))
+    golden_doc_ids = {json.loads(line)["doc_id"] for line in golden_lines}
+    distractor_docs = corpus_docs - len(golden_doc_ids)
 
     default_arm = e1["arms"][0]
     no_contract_arm = e1["arms"][1]
@@ -237,12 +240,20 @@ def build_metrics() -> dict:
             "anchors": ["{}% line coverage"],
         },
         "top_k": {
-            "rendered": "12",
+            "rendered": str(PipelineConfig().top_k),
             "anchors": ["retriever returns {}", "top {} candidates"],
         },
         "k_ctx": {
-            "rendered": "4",
-            "anchors": ["window of {} chunks", "{} chunk context window"],
+            "rendered": str(PipelineConfig().k_ctx),
+            "anchors": ["window of {} chunks", "from {} chunks kept"],
+        },
+        "k_ctx_improved": {
+            "rendered": str(improved["k_ctx"]),
+            "anchors": ["to {} chunks kept"],
+        },
+        "distractor_docs": {
+            "rendered": str(distractor_docs),
+            "anchors": ["{} pure distractor documents"],
         },
     }
     return metrics
