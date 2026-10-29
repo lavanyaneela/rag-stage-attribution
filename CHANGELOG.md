@@ -5,6 +5,21 @@ Keep a Changelog, and versions are annotated git tags.
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-10-29
+
+### Fixed
+
+- The first CI run on GitHub failed its own byte reproducibility gate, and
+  the gate was right: traces serialized FAISS scores as rounded floats,
+  whose shortest form length depends on the value, and FAISS float32
+  reductions differ by about 1e-7 between CPU generations. The trace byte
+  count, published as a machine independent count, was not one. Scores in
+  traces are now fixed width strings, the byte median re-measures at 1722,
+  and a test replays the wobble at the search boundary and asserts nothing
+  reaching a committed file changes.
+- checkout and setup-python actions moved to current majors; the old ones
+  warn as deprecated on every run.
+
 ## [1.0.0] - 2026-10-28
 
 ### Fixed
