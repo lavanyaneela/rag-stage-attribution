@@ -36,6 +36,23 @@ class PipelineResources:
     generate: GenerateFn
 
 
+def _trace_score(score: float) -> str:
+    """Serialize a similarity score for the trace at fixed width.
+
+    Fixed width is load bearing, found the hard way: FAISS computes float32
+    inner products whose reduction order follows the CPU's SIMD width, so
+    the same committed vectors score a hair differently (around 1e-7) on
+    different machines. A rounded float serializes at whatever length its
+    value happens to need, so that wobble changed the trace's byte count
+    between machines, and the byte count is published as a machine
+    independent count. CI on a different CPU failed the byte
+    reproducibility gate and disproved the claim. Only the trace's total
+    length reaches a committed file, so a fixed width string makes the
+    count a count again while the last digit stays a fact about the runner.
+    """
+    return f"{score:.6f}"
+
+
 def build_pipeline(cfg: PipelineConfig, res: PipelineResources):
     def rewrite_node(state: PipelineState) -> dict:
         rewritten = rewrite_query(state["question"])
@@ -48,7 +65,10 @@ def build_pipeline(cfg: PipelineConfig, res: PipelineResources):
         hits = res.store.search(res.query_vector(state["qid"]), cfg.top_k)
         record = TraceRecord(
             "retrieve",
-            {"top_k": cfg.top_k, "hits": [{"chunk_id": c, "score": round(s, 6)} for c, s in hits]},
+            {
+                "top_k": cfg.top_k,
+                "hits": [{"chunk_id": c, "score": _trace_score(s)} for c, s in hits],
+            },
         )
         return {"retrieved": hits, "trace": state["trace"] + [record]}
 
@@ -60,7 +80,7 @@ def build_pipeline(cfg: PipelineConfig, res: PipelineResources):
             {
                 "k_ctx": cfg.k_ctx,
                 "alpha": cfg.rerank_alpha,
-                "context": [{"chunk_id": c, "score": round(s, 6)} for c, s in context],
+                "context": [{"chunk_id": c, "score": _trace_score(s)} for c, s in context],
                 "cut": [c for c, _ in ordered[cfg.k_ctx :]],
             },
         )

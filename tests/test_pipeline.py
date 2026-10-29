@@ -48,8 +48,26 @@ def test_the_retrieve_record_carries_top_k_hits_in_score_order(resources, cfg):
     state = run_question(_pipeline(resources), resources.golden[0])
     hits = state["trace"][1].payload["hits"]
     assert len(hits) == cfg.top_k
-    scores = [h["score"] for h in hits]
+    scores = [float(h["score"]) for h in hits]
     assert scores == sorted(scores, reverse=True)
+
+
+def test_trace_scores_are_fixed_width_strings(resources, cfg):
+    """Pins the CI finding that motivated _trace_score: a rounded float
+    serializes at value-dependent length, FAISS float32 scores wobble at
+    the last digit across CPU generations, and the trace byte count (the
+    only part of a score that reaches a committed file) changed between
+    machines. Every serialized score must be a 6-decimal fixed width
+    string, so the byte count no longer depends on which CPU measured."""
+    state = run_question(_pipeline(resources), resources.golden[0])
+    hits = state["trace"][1].payload["hits"]
+    context = state["trace"][2].payload["context"]
+    for entry in hits + context:
+        score = entry["score"]
+        assert isinstance(score, str)
+        whole, _, frac = score.lstrip("-").partition(".")
+        assert len(frac) == 6, score
+        float(score)  # still parseable as a number
 
 
 def test_the_rerank_record_names_both_the_context_and_the_cut(resources, cfg):
