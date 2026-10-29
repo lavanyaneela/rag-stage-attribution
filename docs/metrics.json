@@ -221,7 +221,7 @@
   "anchors": [
    "{} tests"
   ],
-  "rendered": "216"
+  "rendered": "217"
  },
  "top_k": {
   "anchors": [
@@ -233,7 +233,7 @@
   "anchors": [
    "{} bytes per question"
   ],
-  "rendered": "1688"
+  "rendered": "1722"
  },
  "trace_records_per_question": {
   "anchors": [

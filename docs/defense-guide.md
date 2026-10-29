@@ -32,7 +32,7 @@ deployment measure their own failure mix.
 a graph node is a boundary with a name that leaves a record. The ablation
 is my proof that the machinery earns its place: deny the attributor the
 trace and it places none of the 360 retrieval-side failures. The cost is
-admitted and priced: 4 trace records per question, a median of 1688 bytes
+admitted and priced: 4 trace records per question, a median of 1722 bytes
 per question, and a wall time ratio captured once and asserted by a test
 rather than quoted, because durations are facts about machines.
 

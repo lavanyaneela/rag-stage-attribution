@@ -47,7 +47,7 @@ the other cases live and what props the number up:
   the failures that remain belong to the generator, which no vector
   database setting will touch.
 
-Credibility line: 216 tests, 98.8% line coverage, every figure above
+Credibility line: 217 tests, 98.8% line coverage, every figure above
 re-derived by `make verify` from committed experiment outputs, and the
 checker that enforces it is demonstrated failing on a deliberately broken
 figure in CI. The coverage denominator excludes the two network gated
@@ -213,7 +213,7 @@ confusable on purpose:
 - **Machine dependent figures.** The graph's wall time overhead was
   captured once as a ratio in `docs/experiments/e5_overhead.json` and is
   asserted by a test, not quoted here. The portable costs are counts: 4
-  trace records per question and a median of 1688 bytes per question.
+  trace records per question and a median of 1722 bytes per question.
 
 ## Layout, exit codes, reproduction
 

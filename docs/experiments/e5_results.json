@@ -1,7 +1,7 @@
 {
  "questions": 73,
- "trace_bytes_per_question_max": 1798,
- "trace_bytes_per_question_median": 1688,
- "trace_bytes_per_question_min": 1561,
+ "trace_bytes_per_question_max": 1831,
+ "trace_bytes_per_question_median": 1722,
+ "trace_bytes_per_question_min": 1594,
  "trace_records_per_question": 4
 }

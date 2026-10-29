@@ -25,7 +25,7 @@ seams the architecture.
 
 This is more machinery than a pipeline needs if nobody wants attribution.
 E5 prices the part of the cost that is machine independent: 4 trace
-records per question and a median of 1688 bytes per question. The wall time overhead of the graph
+records per question and a median of 1722 bytes per question. The wall time overhead of the graph
 plus trace against bare function calls was captured once on the capture
 machine, lives in docs/experiments/e5_overhead.json as a ratio, and is
 asserted by a test rather than quoted in prose, because an absolute
