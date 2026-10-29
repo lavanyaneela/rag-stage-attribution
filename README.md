@@ -47,7 +47,7 @@ the other cases live and what props the number up:
   the failures that remain belong to the generator, which no vector
   database setting will touch.
 
-Credibility line: 217 tests, 98.8% line coverage, every figure above
+Credibility line: 218 tests, 98.8% line coverage, every figure above
 re-derived by `make verify` from committed experiment outputs, and the
 checker that enforces it is demonstrated failing on a deliberately broken
 figure in CI. The coverage denominator excludes the two network gated

@@ -123,3 +123,32 @@ def test_trace_records_are_immutable():
     except AttributeError:
         raised = True
     assert raised
+
+
+def test_committed_values_survive_cross_cpu_score_wobble(resources, monkeypatch):
+    """Reconstructs the CI failure that motivated fixed width scores: FAISS
+    float32 reductions differ by around 1e-7 between CPU generations, and
+    the byte reproducibility gate failed on a runner whose scores rendered
+    at different lengths. This test replays a suite run with a deterministic
+    jitter of that size injected at the search boundary and asserts that
+    nothing reaching a committed file changes: not a correctness bit, not a
+    golden position, not a trace byte count."""
+    import random
+
+    from rag_stage_attribution.injection import InjectionMix
+    from rag_stage_attribution.retrieval.faiss_store import FaissStore
+    from rag_stage_attribution.runner import run_suite
+
+    baseline = run_suite(resources, InjectionMix(), seed=1)
+
+    original = FaissStore.search
+
+    def jittered(self, query, top_k):
+        return [
+            (cid, score + random.Random(cid).uniform(-1e-7, 1e-7))
+            for cid, score in original(self, query, top_k)
+        ]
+
+    monkeypatch.setattr(FaissStore, "search", jittered)
+    perturbed = run_suite(resources, InjectionMix(), seed=1)
+    assert perturbed == baseline
